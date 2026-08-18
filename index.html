@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mitra Stay — Shantiniketan</title>
+<meta name="description" content="Mitra Stay: six rooms on Jambuni Sericulture Road, Bolpur. Enquiries +91 78278 58997. Private washroom and balcony in every room, a kitchen of your own in four of the six.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0,1;1,9..144,300..600,20,1&family=Noto+Serif+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6efe1;
+    --ink:#211b14;
+    --soft:#6d5f4d;
+    --faint:#b3a189;
+    --rust:#a8442a;
+    --indigo:#3a4a63;
+    --pad:clamp(1.1rem,4vw,3.4rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"opsz" 14,"WONK" 1,"SOFT" 0;
+    font-weight:400; font-size:clamp(1rem,.4vw + .92rem,1.06rem); line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block}
+  a{color:inherit}
+
+  /* the printed frame, as on the receipt */
+  .sheet{
+    border:1.5px solid var(--ink);
+    margin:clamp(.5rem,1.6vw,1.1rem);
+    padding:clamp(.35rem,.8vw,.6rem);
+  }
+  .sheet__in{border:1px solid var(--rust); padding-bottom:clamp(2rem,5vw,3.5rem)}
+
+  .bn{font-family:"Noto Serif Bengali",serif}
+  .cap{
+    font-size:.66rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--faint); font-variation-settings:"opsz" 9; font-weight:500;
+  }
+  .rust{color:var(--rust)}
+
+  /* masthead */
+  .head{text-align:center; padding:clamp(2.4rem,6vw,4.5rem) var(--pad) clamp(1.6rem,4vw,2.4rem)}
+  .alpona{width:clamp(74px,11vw,104px); height:auto; margin:0 auto clamp(1rem,2.5vw,1.6rem)}
+  .head h1{
+    font-variation-settings:"opsz" 144,"WONK" 1,"SOFT" 0;
+    font-weight:400; font-size:clamp(2.9rem,10vw,5.6rem); line-height:.92;
+    letter-spacing:-.025em; margin:0;
+  }
+  .head .bnline{font-size:clamp(1rem,2.6vw,1.35rem); color:var(--rust); margin:.7rem 0 0}
+  .head .addr{font-style:italic; color:var(--soft); margin:.8rem 0 0; font-size:clamp(.95rem,1.6vw,1.05rem)}
+  .band{
+    border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+    margin:clamp(1.4rem,3.5vw,2.2rem) var(--pad) 0;
+    padding:.65rem 0; display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem 1.6rem;
+  }
+
+  /* plates */
+  .plate{margin:clamp(1.8rem,4vw,2.6rem) var(--pad) 0}
+  .plate img{width:100%; border:1px solid var(--ink); filter:saturate(.93) sepia(.05)}
+  .plate figcaption{font-style:italic; color:var(--soft); font-size:.86rem; margin-top:.55rem; text-align:center}
+  .plate--tall img{max-height:min(76vh,40rem); object-fit:cover; object-position:52% 42%}
+  .plate--wide{margin:clamp(1.8rem,4vw,2.6rem) 0 0}
+  .plate--wide img{width:100%; max-height:min(70vh,34rem); object-fit:cover; object-position:50% 46%}
+  .plate--wide + .gal{margin-top:clamp(1.4rem,3vw,2rem)}
+  .plate--portrait{max-width:30rem; margin-left:auto; margin-right:auto}
+  .plate--portrait + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
+  .plate--half{max-width:36rem; margin-left:auto; margin-right:auto}
+  .plate--half + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
+
+  /* sections */
+  .sec{padding:clamp(2.6rem,6vw,4.5rem) var(--pad) 0; max-width:66rem; margin:0 auto}
+  .sec__head{display:flex; align-items:baseline; gap:.9rem; margin-bottom:1.4rem}
+  .num{
+    font-size:.72rem; letter-spacing:.14em; color:var(--rust); font-weight:600;
+    border:1px solid var(--rust); border-radius:50%; width:2.1rem; height:2.1rem;
+    display:grid; place-items:center; flex:none; font-variation-settings:"opsz" 9;
+  }
+  .sec h2{
+    font-variation-settings:"opsz" 96,"WONK" 1; font-weight:400;
+    font-size:clamp(1.7rem,4.4vw,2.7rem); line-height:1.06; letter-spacing:-.02em; margin:0;
+  }
+  .sec h2 em{font-style:italic; color:var(--rust)}
+  .dash{border:0; border-top:1px dashed var(--rust); opacity:.65; margin:0 0 1.8rem}
+  .lede{font-size:clamp(1.06rem,1.7vw,1.24rem); line-height:1.55; max-width:38rem; margin:0 0 1.1rem}
+  p{max-width:36rem}
+  .drop::first-letter{
+    float:left; font-size:3.4em; line-height:.82; padding:.06em .12em 0 0;
+    font-variation-settings:"opsz" 144; color:var(--rust);
+  }
+  .two{display:grid; gap:clamp(1.6rem,4vw,3rem); grid-template-columns:1fr}
+  @media(min-width:860px){ .two{grid-template-columns:1fr 1fr} }
+
+  /* ledger with dot leaders */
+  .led{list-style:none; margin:1.4rem 0 0; padding:0}
+  .led li{display:flex; align-items:baseline; gap:.45rem; padding:.42rem 0}
+  .led .k{white-space:nowrap}
+  .led .k b{font-weight:600}
+  .led .dots{flex:1 1 auto; min-width:1.5rem; border-bottom:1.5px dotted var(--faint); transform:translateY(-.3em)}
+  .led .v{white-space:nowrap; color:var(--soft); font-style:italic; text-align:right}
+  .led .v.num-v{font-style:normal; color:var(--ink)}
+  .led--loose li{padding:.6rem 0}
+  .note{font-style:italic; color:var(--soft); font-size:.9rem; margin-top:1rem}
+
+  /* the one display figure */
+  .figure{
+    text-align:center; margin:clamp(2rem,5vw,3rem) 0 0;
+    border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); padding:1.6rem 0;
+  }
+  .figure b{
+    display:block; font-style:italic; font-weight:400;
+    font-variation-settings:"opsz" 144,"SOFT" 20,"WONK" 1;
+    font-size:clamp(2.6rem,8vw,4.6rem); line-height:1; color:var(--rust); letter-spacing:-.02em;
+  }
+  .figure span{display:block; margin-top:.5rem}
+
+  /* gallery of plates */
+  .gal{display:grid; gap:clamp(.7rem,1.6vw,1.2rem); grid-template-columns:repeat(2,1fr); margin-top:1.8rem}
+  @media(min-width:760px){ .gal{grid-template-columns:repeat(3,1fr)} }
+  @media(min-width:1120px){ .gal{grid-template-columns:repeat(4,1fr)} }
+  .gal figure{margin:0}
+  .gal button{display:block; width:100%; padding:0; line-height:0; border:1px solid var(--ink); background:none; cursor:zoom-in; overflow:hidden}
+  .gal img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:saturate(.93) sepia(.05); transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .gal button:hover img{transform:scale(1.03)}
+  .gal figcaption{font-style:italic; color:var(--soft); font-size:.8rem; margin-top:.45rem; line-height:1.45}
+
+  .lb{position:fixed; inset:0; z-index:80; display:none; background:rgba(33,27,20,.95); padding:clamp(1rem,4vw,3rem); align-items:center; justify-content:center; flex-direction:column; gap:1rem}
+  .lb.on{display:flex}
+  .lb img{max-width:100%; max-height:82vh; object-fit:contain; border:1px solid var(--faint)}
+  .lb p{color:var(--paper); font-style:italic; font-size:.88rem; margin:0; text-align:center; max-width:34rem}
+  .lb button{position:absolute; top:1rem; right:1rem; background:none; border:1px solid rgba(246,239,225,.5); color:var(--paper); font:inherit; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; padding:.5rem 1rem; cursor:pointer}
+
+  /* around: two column ledger */
+  .cols{columns:1; column-gap:clamp(2rem,5vw,4rem)}
+  @media(min-width:820px){ .cols{columns:2} }
+  .entry{break-inside:avoid; margin:0 0 1.5rem; max-width:none}
+  .entry h3{font-size:1.12rem; font-weight:600; margin:0 0 .1rem; font-variation-settings:"opsz" 24}
+  .entry .when{font-style:italic; color:var(--rust); font-size:.85rem}
+  .entry p{margin:.35rem 0 0; font-size:.94rem; color:var(--soft); max-width:none}
+
+  /* seal */
+  .close{text-align:center; padding:clamp(2.6rem,6vw,4rem) var(--pad) 0}
+  .seal{width:clamp(112px,17vw,148px); height:auto; margin:0 auto; transform:rotate(-6.5deg)}
+  .close .line{font-style:italic; color:var(--soft); margin:1.4rem auto 0; max-width:30rem}
+  .cta{
+    display:inline-block; margin-top:1.6rem; padding:.85rem 2.1rem;
+    border:1px solid var(--ink); text-decoration:none; font-size:.72rem;
+    letter-spacing:.2em; text-transform:uppercase; font-weight:600; font-variation-settings:"opsz" 9;
+  }
+  .cta:hover{background:var(--ink); color:var(--paper)}
+  .foot{
+    margin:clamp(2.4rem,5vw,3.4rem) var(--pad) 0; border-top:1px solid var(--ink);
+    padding-top:.9rem; display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; justify-content:space-between;
+  }
+  .kalka{display:block; margin:clamp(2rem,4vw,2.6rem) auto 0; width:46px; height:auto}
+
+  .rise{opacity:0; transform:translateY(14px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rise.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rise{opacity:1; transform:none; transition:none}
+    .gal img{transition:none}
+    .gal button:hover img{transform:none}
+  }
+  a:focus-visible,button:focus-visible{outline:2px solid var(--rust); outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="sheet"><div class="sheet__in">
+
+  <header class="head">
+    <svg class="alpona" viewBox="0 0 120 78" fill="none" stroke="#a8442a" stroke-width="1.2" aria-hidden="true">
+      <path d="M60 8c-5 9-5 17 0 24 5-7 5-15 0-24Z"/>
+      <path d="M60 32c-8-6-17-7-25-3 6 7 15 9 25 3Z"/>
+      <path d="M60 32c8-6 17-7 25-3-6 7-15 9-25 3Z"/>
+      <path d="M60 33c-11-1-21 4-27 13 11 3 22-2 27-13Z"/>
+      <path d="M60 33c11-1 21 4 27 13-11 3-22-2-27-13Z"/>
+      <path d="M60 33v29"/>
+      <circle cx="60" cy="5" r="2.6"/><circle cx="31" cy="26" r="2.2"/><circle cx="89" cy="26" r="2.2"/>
+      <circle cx="27" cy="49" r="1.8"/><circle cx="93" cy="49" r="1.8"/>
+      <path d="M48 66c4-4 8-4 12 0 4-4 8-4 12 0"/>
+      <path d="M42 72c6-5 12-5 18 0 6-5 12-5 18 0"/>
+    </svg>
+    <h1>Mitra Stay</h1>
+    <p class="bnline bn">মিত্র স্টে · শান্তিনিকেতন</p>
+    <p class="addr">Jambuni Sericulture Road, Bolpur, Birbhum, West Bengal 731204</p>
+  </header>
+
+  <div class="band">
+    <span class="cap">Six rooms</span>
+    <span class="cap">Four with kitchens</span>
+    <span class="cap">Two kilometres from the station</span>
+    <span class="cap">No curfew</span>
+  </div>
+
+  <figure class="plate plate--tall">
+    <img src="img/facade.jpg" alt="The front of Mitra Stay: a cream house with oxblood brick trim, arched windows and a curved balcony, seen through the leaves of a teak tree.">
+    <figcaption>The house from the lane, through the teak.</figcaption>
+  </figure>
+
+  <section class="sec" id="house">
+    <div class="sec__head"><span class="num">01</span><h2>The <em>House</em></h2></div>
+    <hr class="dash">
+    <div class="two">
+      <div>
+        <p class="lede drop">Mitra Stay is not on the tourist stretch, and that is rather the point. It stands in a quiet residential lane two kilometres out, where the days are unhurried and the evenings are made for walking.</p>
+        <p>You come in through an iron gate onto a red-oxide courtyard laid in swirls — past aloe and bougainvillea and a coconut palm that came up through the paving long before anyone thought about parking. Inside it is cool and plain: terrazzo underfoot, whitewashed walls, wrought-iron jaali at every window so they can be left open.</p>
+        <p>There is parking in front, a grocery next door, and the market a hundred metres on.</p>
+        <ul class="led">
+          <li><span class="k"><b>Red oxide</b>, hand-swirled</span><span class="dots"></span><span class="v">courtyard &amp; paths</span></li>
+          <li><span class="k"><b>Terrazzo</b>, marble chips in grey cement</span><span class="dots"></span><span class="v">set on site</span></li>
+          <li><span class="k"><b>Wrought-iron jaali</b>, four-petal</span><span class="dots"></span><span class="v">every window</span></li>
+          <li><span class="k"><b>Brick trim</b> against lime-cream</span><span class="dots"></span><span class="v">Birbhum clay</span></li>
+        </ul>
+      </div>
+      <div>
+        <figure class="plate" style="margin-left:0; margin-right:0; margin-top:0">
+          <img src="img/garden.jpg" alt="The garden courtyard: red-oxide paving in swirl patterns, terracotta pots of agave and flowering shrubs, a coconut palm and dense green trees.">
+          <figcaption>The courtyard, late morning. The pattern repeats every four feet and never quite lines up.</figcaption>
+        </figure>
+        <figure class="plate" style="margin-left:0; margin-right:0">
+          <img src="img/verandah.jpg" alt="The verandah: terrazzo floor with coloured marble chips, a long concrete bench under a wall of four-petal iron grilles, a wooden folding chair with green cushions.">
+          <figcaption>The verandah, where most guests end up with tea.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="rooms">
+    <div class="sec__head"><span class="num">02</span><h2>The <em>Rooms</em></h2></div>
+    <hr class="dash">
+    <p class="lede">Spacious and airy, each with a private washroom and a private balcony — with its own entry and exit, so you come and go on your own schedule.</p>
+    <div class="two">
+      <div>
+        <p class="cap">In every one of the six</p>
+        <ul class="led">
+          <li><span class="k">Private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
+          <li><span class="k">Private balcony</span><span class="dots"></span><span class="v">own entry &amp; exit</span></li>
+          <li><span class="k">Air conditioning</span><span class="dots"></span><span class="v">and a ceiling fan</span></li>
+          <li><span class="k">Wi-Fi</span><span class="dots"></span><span class="v">free, work-ready</span></li>
+          <li><span class="k">Parking</span><span class="dots"></span><span class="v">in front of the house</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="cap">In four of the six</p>
+        <ul class="led">
+          <li><span class="k">A private kitchen</span><span class="dots"></span><span class="v">yours alone</span></li>
+          <li><span class="k">Refrigerator, gas stove</span><span class="dots"></span><span class="v">mixer, utensils</span></li>
+          <li><span class="k">Grocery store</span><span class="dots"></span><span class="v num-v">next door</span></li>
+          <li><span class="k">Market</span><span class="dots"></span><span class="v num-v">100 m</span></li>
+        </ul>
+        <p class="note">Say so when you book if you want one — there are only four, and they go first.</p>
+      </div>
+    </div>
+
+    <figure class="plate plate--half">
+      <img src="img/pbal.jpg" alt="A curved balcony with a polished marble floor, a wrought-iron railing in a branching leaf pattern, two crotons in terracotta pots, and green trees filling the view beyond.">
+      <figcaption>The curved balcony, with the leaf railing — its own way in and its own way out.</figcaption>
+    </figure>
+
+    <div class="figure">
+      <b>Four of six</b>
+      <span class="cap">Rooms with a kitchen of their own</span>
+    </div>
+  </section>
+
+  <section class="sec" id="inside">
+    <div class="sec__head"><span class="num">03</span><h2>Inside, <em>plainly</em></h2></div>
+    <hr class="dash">
+    <p class="lede">Nobody has styled these rooms for a photograph. Block-print curtains, wooden beds with storage under them, brass and terracotta on the shelves, and a fan turning above the air conditioner.</p>
+    <figure class="plate plate--wide">
+      <img src="img/rhero.jpg" alt="A bedroom with a carved wooden bed and floral bedcover, leaf-print curtains, framed photographs on narrow shelves, a cane chair, and a polished wooden door standing open to the balcony.">
+      <figcaption>The cane chair by the window, and the wooden door out to the balcony.</figcaption>
+    </figure>
+    <figure class="plate plate--portrait">
+      <img src="img/rhero2.jpg" alt="A bedroom with a pink-panelled ceiling, a green ceiling fan, blue checked bedspread on a wooden storage bed, a tall almirah, a framed pattachitra of Ganesha, and block-print curtains on two walls.">
+      <figcaption>The panelled ceiling, and curtains on two sides — this room takes light from both.</figcaption>
+    </figure>
+    <figure class="plate plate--half">
+      <img src="img/rhero3.jpg" alt="A large high-ceilinged room with a yellow checked bedspread on a wooden bed, ceiling fan, air conditioner, a shelf of books and curios, and an open door through to the balcony.">
+      <figcaption>High ceilings, fan and air conditioning both, and the balcony door left standing open.</figcaption>
+    </figure>
+    <div class="gal">
+      <figure><button type="button" data-cap="Storage under the bed, tree-print curtains, light off the grey marble floor."><img src="img/r1.jpg" alt="A bright bedroom with a wooden storage bed, bird-print bedcover, block-print curtains and an air conditioner."></button><figcaption>Storage under the bed; grey marble underfoot.</figcaption></figure>
+      <figure><button type="button" data-cap="One of the rooms with a table of its own — you can eat in, not only sleep in."><img src="img/r2.jpg" alt="A room with a dining table and four wooden chairs beside the bed, a horse painting on the wall and an iron-grille window."></button><figcaption>A table of your own.</figcaption></figure>
+      <figure><button type="button" data-cap="Built-in niche shelves holding brass, terracotta and small framed prints."><img src="img/r4.jpg" alt="A bedroom with built-in white niche shelves holding brass and terracotta objects, a wooden cupboard and a doorway through to the next room."></button><figcaption>Niche shelves, and years of collected brass.</figcaption></figure>
+      <figure><button type="button" data-cap="Two rooms that open into one another — the arrangement families usually ask for."><img src="img/r6.jpg" alt="A bedroom with a purple and yellow plaid bedspread and an open doorway showing a second bed in the adjoining room."></button><figcaption>Two rooms that open into each other.</figcaption></figure>
+      <figure><button type="button" data-cap="The simplest room in the house, with a kettle and a fold-away table."><img src="img/r8.jpg" alt="A small simple room with a green bedcover, a standing fan, a shelf, and a blue folding table holding an electric kettle."></button><figcaption>The simplest room, with a kettle.</figcaption></figure>
+      <figure><button type="button" data-cap="A washroom of your own, with a geyser over the shower and hot water whenever you want it."><img src="img/g7.jpg" alt="A washroom with pebble-textured white tiles, a toilet, a shower with an electric geyser above it, and a block-print curtain at the window."></button><figcaption>Geyser over the shower; hot water all day.</figcaption></figure>
+      <figure><button type="button" data-cap="Every room has its own washroom — none are shared."><img src="img/g8.jpg" alt="A washroom with beige marbled tiles, a toilet, a health faucet and a blue bucket."></button><figcaption>Private, in every one of the six.</figcaption></figure>
+      <figure><button type="button" data-cap="The outside stair to the upper rooms — which is how the balconies get their own entry and exit."><img src="img/g9.jpg" alt="An external red-painted iron staircase against a cream wall, with a purple bicycle parked beneath it on red-oxide tiles."></button><figcaption>The outside stair, and somebody's bicycle.</figcaption></figure>
+      <figure><button type="button" data-cap="Chappals off at the door, as in any Bengali house."><img src="img/g10.jpg" alt="A small dark red wooden shoe rack against a white wall, holding two pairs of rubber slippers."></button><figcaption>Chappals off at the door.</figcaption></figure>
+    </div>
+    <p class="note">Rooms differ — some have a kitchen, some a table, some a second room off them. Tell us who is coming and we will put you in the right one.</p>
+  </section>
+
+  <section class="sec" id="eating">
+    <div class="sec__head"><span class="num">04</span><h2>The <em>Table</em></h2></div>
+    <hr class="dash">
+    <p class="lede">We keep no dining room — and four of the six rooms don't need one. They have a kitchen of their own: gas, sink, filtered water, and every pot you would want.</p>
+    <div class="two" style="margin-top:1.8rem">
+      <figure class="plate" style="margin:0">
+        <img src="img/pkit.jpg" alt="A kitchen with a black granite counter, a two-burner gas stove and cylinder, an electric kettle, a stainless sink, a wall-mounted water purifier, dark patterned tiles and a wood-look floor.">
+        <figcaption>Gas, sink, filtered water, and shelves underneath.</figcaption>
+      </figure>
+      <figure class="plate" style="margin:0">
+        <img src="img/pdin.jpg" alt="A glass-topped wooden dining table with carved chairs, block-print seat cushions, Bankura terracotta horses as a centrepiece, and a cane chair beside it.">
+        <figcaption>And somewhere to sit down and eat it, with the Bankura horses looking on.</figcaption>
+      </figure>
+    </div>
+    <div class="gal" style="margin-top:1.4rem">
+      <figure><button type="button" data-cap="Green marble counter, a single burner, and the window over the sink."><img src="img/g1.jpg" alt="A green marble kitchen counter with a single-burner gas stove, a stainless sink, dish soap and a window looking onto banana leaves."></button><figcaption>A window over the sink.</figcaption></figure>
+      <figure><button type="button" data-cap="Plates, glasses, knives, a chopping board — and a few sweets put out before you arrive."><img src="img/g2.jpg" alt="A kitchen counter with a cutlery caddy, plates, glasses, blue mugs on a tray, storage jars, an orange chopping board and a plate of wrapped sweets."></button><figcaption>Set out before you arrive.</figcaption></figure>
+      <figure><button type="button" data-cap="A smaller kitchen — water dispenser, stove, and the pots stacked below."><img src="img/g3.jpg" alt="A small kitchen through an open wooden door: a blue water dispenser, a gas stove on a green marble counter, and pressure cookers and pans stacked in the shelf below."></button><figcaption>Cookers and pans, stacked below.</figcaption></figure>
+      <figure><button type="button" data-cap="Jars, glasses, cups and the kettle, on shelves cut into the wall."><img src="img/g4.jpg" alt="Four shelves recessed into a white wall holding storage jars, glasses, teacups, a pan and a black kettle."></button><figcaption>Jars and cups, in the wall itself.</figcaption></figure>
+      <figure><button type="button" data-cap="Karai, pressure cooker, tawa, chopping board — enough to cook a proper meal, not just boil an egg."><img src="img/g5.jpg" alt="Recessed kitchen shelves holding a karai, lids, a saucepan, a baking tray, a knife and an orange chopping board."></button><figcaption>Enough to cook properly with.</figcaption></figure>
+      <figure><button type="button" data-cap="The kitchen shelves, and the door straight through to the room."><img src="img/g6.jpg" alt="A tall recessed shelf unit of pots and jars beside an open door looking through into the bedroom with its bookshelf and television."></button><figcaption>The kitchen, a door from the bed.</figcaption></figure>
+    </div>
+    <p class="note" style="margin-bottom:1.6rem">A grocery store is next door and the market is a hundred metres on. If you would rather not cook at all, every other way to eat is below.</p>
+    <ul class="led led--loose">
+      <li><span class="k"><b>Cook in your room</b>, if yours has a kitchen</span><span class="dots"></span><span class="v num-v">four rooms</span></li>
+      <li><span class="k"><b>Order from us</b>, home-style Bengali</span><span class="dots"></span><span class="v num-v">₹200 veg · ₹250 non-veg</span></li>
+      <li><span class="k"><b>Tiffin services</b>, two of them nearby</span><span class="dots"></span><span class="v num-v">from ₹80</span></li>
+      <li><span class="k"><b>Swiggy &amp; Zomato</b>, both deliver to the door</span><span class="dots"></span><span class="v">daily</span></li>
+      <li><span class="k"><b>Hotel Utsav</b>, right across the way</span><span class="dots"></span><span class="v">walk over</span></li>
+    </ul>
+    <p class="note">Bonolokkhi's tourist lunch must be booked by 10 AM; Bharat Sevasram Sangha at Muluk serves a satwik lunch on donation, called for the evening before. Cafés at Ratanpally and inside the campus. Every number arrives with your guest guide.</p>
+  </section>
+
+  <figure class="plate">
+    <img src="img/terrace.jpg" alt="The terrace: bougainvillea in flower, rows of marigolds in terracotta pots, and a small round table with cane chairs beside the door.">
+    <figcaption>The terrace, with the marigolds in their pots.</figcaption>
+  </figure>
+
+  <section class="sec" id="around">
+    <div class="sec__head"><span class="num">05</span><h2>Around, <em>&amp; further out</em></h2></div>
+    <hr class="dash">
+    <p class="lede">Ours is a residential area, so the sights are not walkable — but the roads are uncrowded and almost everything is a quarter of an hour by e-rickshaw. Two toto drivers we trust work with us at fair prices.</p>
+
+    <ul class="led led--loose">
+      <li><span class="k">Bolpur Shantiniketan station</span><span class="dots"></span><span class="v num-v">2 km</span></li>
+      <li><span class="k">Rabindra Bhawan <i>— closed Wed &amp; Thu</i></span><span class="dots"></span><span class="v num-v">2.9 km</span></li>
+      <li><span class="k">Sonajhuri Haat <i>— Saturdays</i></span><span class="dots"></span><span class="v num-v">4 km</span></li>
+      <li><span class="k">Bishnubati tribal village &amp; museum</span><span class="dots"></span><span class="v num-v">10 km</span></li>
+    </ul>
+
+    <div class="cols" style="margin-top:2.4rem">
+      <article class="entry">
+        <h3>Nandan Gallery</h3><span class="when">Facing the museum</span>
+        <p>Artists show here regularly — ask the security what is on and walk in. Ramkinkar Baij's sculptures are scattered across the campus around it.</p>
+      </article>
+      <article class="entry">
+        <h3>Prakriti Bhawan</h3><span class="when">Beside the haat</span>
+        <p>A private museum of natural rock sculpture. Easy to pair with a Saturday at Sonajhuri.</p>
+      </article>
+      <article class="entry">
+        <h3>Art &amp; ceramics</h3><span class="when">Working studios</span>
+        <p>Krittika, Tokaroun, Mrittika and SSVAD for art; Hasa and Lipi's for Shantiniketan-aesthetic ceramics — Hasa is loveliest in the evening.</p>
+      </article>
+      <article class="entry">
+        <h3>Cloth &amp; carving</h3><span class="when">By appointment</span>
+        <p>Shibori and kantha stitch with Karma Ashrama and Papri Basak; Robi Bhaskar carves wood at Palashbuni Gram, and any toto knows the way.</p>
+      </article>
+      <article class="entry">
+        <h3>Auroshree &amp; Sriniketan</h3><span class="when">On foot</span>
+        <p>You can walk to Auroshree market with the campus gate right there, or out to Sriniketan for the agricultural departments.</p>
+      </article>
+      <article class="entry">
+        <h3>Zamindar houses</h3><span class="when">Close by</span>
+        <p>Raipur and Surul, both an easy half-day. Amar Kutir, the society-run craft shop, sits between them.</p>
+      </article>
+      <article class="entry">
+        <h3>An hour out</h3><span class="when">By car</span>
+        <p>Chinpai Dam, Hetampur Rajbari, and Tarashankar Bandopadhyay's house at Labhpur.</p>
+      </article>
+      <article class="entry">
+        <h3>Shaktipeeths &amp; terracotta</h3><span class="when">Ask us for routes</span>
+        <p>Kankalitala, Labhpur and Attahaas; temple trails at Illambazar, Ghurisha, Joydeb Kenduli, Nanoor, Supur and Itonda.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="stay">
+    <div class="sec__head"><span class="num">06</span><h2>Coming, <em>&amp; staying</em></h2></div>
+    <hr class="dash">
+    <div class="two">
+      <div>
+        <figure class="plate" style="margin:0 0 1.4rem">
+          <img src="img/gate.jpg" alt="The gate, iron with tiled caps, opening onto a quiet road, with the red-oxide drive and a scooter parked inside.">
+          <figcaption>The gate on Jambuni Sericulture Road.</figcaption>
+        </figure>
+        <p>Bolpur Shantiniketan station is two kilometres from the door. Send us your train number and someone will meet you — the lane is easier shown than described.</p>
+        <ul class="led">
+          <li><span class="k">Howrah to Bolpur, fast trains</span><span class="dots"></span><span class="v num-v">≈ 2½ hrs</span></li>
+          <li><span class="k">Station to the house, by toto</span><span class="dots"></span><span class="v num-v">10 min</span></li>
+          <li><span class="k">Sharing totos</span><span class="dots"></span><span class="v">from Jambuni Mor</span></li>
+          <li><span class="k">Scooty, bike &amp; car hire</span><span class="dots"></span><span class="v">we will call</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="cap">Good to know</p>
+        <ul class="led">
+          <li><span class="k">Check-in</span><span class="dots"></span><span class="v num-v">1:00 PM</span></li>
+          <li><span class="k">Check-out</span><span class="dots"></span><span class="v num-v">11:00 AM</span></li>
+          <li><span class="k">Early check-in</span><span class="dots"></span><span class="v">often possible, ask</span></li>
+          <li><span class="k">Curfew</span><span class="dots"></span><span class="v">none at all</span></li>
+          <li><span class="k">Children</span><span class="dots"></span><span class="v">very welcome</span></li>
+        </ul>
+        <p class="cap" style="margin-top:2rem">Write to us</p>
+        <ul class="led">
+          <li><span class="k">Phone</span><span class="dots"></span><span class="v num-v"><a href="tel:+917827858997">+91 78278 58997</a></span></li>
+          <li><span class="k">WhatsApp</span><span class="dots"></span><span class="v num-v"><a href="https://wa.me/917827858997?text=Hello%20—%20I%27d%20like%20to%20ask%20about%20dates%20at%20Mitra%20Stay" rel="noopener">+91 78278 58997</a></span></li>
+          <li><span class="k">Email</span><span class="dots"></span><span class="v num-v"><a href="mailto:rupa@kokumlabs.in">rupa@kokumlabs.in</a></span></li>
+          <li><span class="k">Also listed on</span><span class="dots"></span><span class="v num-v"><a href="#">Airbnb</a></span></li>
+        </ul>
+        <p class="note">Tell us your dates, how many of you there are, whether you want a kitchen, and which train you are on. A person replies, not a system. The guest guide follows once you have booked.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="close">
+    <svg class="seal" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+      <circle cx="80" cy="80" r="76" stroke="#a8442a" stroke-width="1.4"/>
+      <circle cx="80" cy="80" r="68" stroke="#a8442a" stroke-width=".7" stroke-dasharray="2.5 3"/>
+      <circle cx="80" cy="80" r="47" stroke="#a8442a" stroke-width=".9"/>
+      <path id="sealpath" d="M80 22a58 58 0 1 1 0 116 58 58 0 1 1 0-116" fill="none"/>
+      <text fill="#a8442a" font-family="Fraunces,serif" font-size="11.5" letter-spacing="3.4">
+        <textPath href="#sealpath" startOffset="4%">MITRA STAY · BOLPUR · BIRBHUM · SINCE THE HOUSE WAS BUILT ·</textPath>
+      </text>
+      <text x="80" y="76" text-anchor="middle" fill="#a8442a" font-family="Noto Serif Bengali,serif" font-size="15">মিত্র স্টে</text>
+      <path d="M62 88c5-5 11-5 18 0 7-5 13-5 18 0" stroke="#a8442a" stroke-width="1"/>
+      <text x="80" y="106" text-anchor="middle" fill="#a8442a" font-family="Fraunces,serif" font-size="8" letter-spacing="2.6">SIX ROOMS</text>
+    </svg>
+    <p class="line">Take the post-dinner stroll. The neighbourhood after dark is calm, safe and lovely — that is our one piece of advice, and we give it to everyone.</p>
+    <a class="cta" href="mailto:rupa@kokumlabs.in?subject=Booking%20enquiry%20—%20Mitra%20Stay">Ask about dates</a>
+    <svg class="kalka" viewBox="0 0 60 20" fill="none" stroke="#b3a189" stroke-width="1" aria-hidden="true">
+      <path d="M2 10h16"/><path d="M42 10h16"/>
+      <path d="M30 3c-6 3-6 11 0 14 6-3 6-11 0-14Z"/><circle cx="30" cy="10" r="1.6"/>
+    </svg>
+  </div>
+
+  <div class="foot">
+    <span class="cap">Mitra Stay · <span class="bn">মিত্র স্টে</span> · Shantiniketan</span>
+    <span class="cap">A Kokum Labs house</span>
+  </div>
+
+</div></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Room photograph">
+  <button type="button" id="lbclose">Close</button>
+  <img id="lbimg" src="" alt="">
+  <p id="lbcap"></p>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.sec, .plate, .close');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
+  els.forEach(function(el){el.classList.add('rise');});
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+  els.forEach(function(el){io.observe(el);});
+})();
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lbimg'),
+      cap=document.getElementById('lbcap'),close=document.getElementById('lbclose'),last=null;
+  function open(btn){
+    last=btn;
+    var src=btn.querySelector('img');
+    img.src=src.src; img.alt=src.alt;
+    cap.textContent=btn.dataset.cap||'';
+    lb.classList.add('on'); close.focus(); document.body.style.overflow='hidden';
+  }
+  function shut(){ lb.classList.remove('on'); img.src=''; document.body.style.overflow=''; if(last){last.focus(); last=null;} }
+  document.querySelectorAll('.gal button').forEach(function(b){ b.addEventListener('click',function(){open(b);}); });
+  close.addEventListener('click',shut);
+  lb.addEventListener('click',function(e){ if(e.target===lb||e.target===img||e.target===cap){shut();} });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('on')){shut();} });
+})();
+</script>
+</body>
+</html>
