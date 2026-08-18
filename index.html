@@ -36,7 +36,7 @@
   .sheet{
     border:1.5px solid var(--ink);
     margin:clamp(.5rem,1.6vw,1.1rem) auto;
-    max-width:82rem;          /* it is a sheet of paper, not a billboard */
+    max-width:88rem;          /* it is a sheet of paper, not a billboard */
     padding:clamp(.35rem,.8vw,.6rem);
   }
   .sheet__in{border:1px solid var(--rust); padding-bottom:clamp(2rem,5vw,3.5rem)}
@@ -80,19 +80,7 @@
   .plate--half{max-width:36rem; margin-left:auto; margin-right:auto}
   .plate--half + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
 
-  /* desktop plate proportions — phones keep the rules above */
-  @media(min-width:900px){
-    /* the full-bleed plates, capped so one photo isn't the whole screen */
-    .sheet__in > .plate img{max-height:min(74vh,40rem); object-fit:cover}
-    /* facade.jpg is portrait (957x1300): give it a portrait frame rather
-       than cropping four fifths of it away to span the width */
-    .plate--tall{max-width:38rem; margin-left:auto; margin-right:auto}
-    .sheet__in > .plate--tall img{max-height:none; aspect-ratio:4/5; object-position:52% 38%}
-    .plate--wide img{max-height:none; aspect-ratio:16/9}
-    /* portrait shots inside a two-column block run far past the prose
-       beside them; cap them so the columns end near each other */
-    .two .plate img{max-height:24rem; object-fit:cover}
-  }
+  .pair{display:grid; gap:clamp(1.2rem,2.5vw,1.8rem)}
 
   /* sections */
   .sec{padding:clamp(2.6rem,6vw,4.5rem) var(--pad) 0; max-width:66rem; margin:0 auto}
@@ -192,11 +180,81 @@
     .gal button:hover img{transform:none}
   }
   a:focus-visible,button:focus-visible{outline:2px solid var(--rust); outline-offset:3px}
+
+  /* ── desktop composition ─────────────────────────────────────────
+     Phones keep every rule above; nothing here applies below 1000px.
+     This block sits last on purpose — it overrides the base layout
+     rules, so it has to come after them in the cascade.
+     The page is photograph-led, so the job is to give the pictures
+     room and stop the prose floating in a field of white. */
+  @media(min-width:1000px){
+
+    /* hero: masthead and band down the left, the house filling the right */
+    .hero{
+      display:grid; grid-template-columns:1fr 1.02fr; align-items:center;
+      column-gap:clamp(2rem,4vw,3.6rem);
+      padding:clamp(2.2rem,4.5vw,3.8rem) var(--pad) 0;
+    }
+    .hero__text{grid-column:1}
+    .hero .head{text-align:left; padding:0}
+    .hero .alpona{margin-left:0; margin-right:0}
+    .hero .head p{margin-left:0; margin-right:0}
+    .hero .band{
+      margin:clamp(1.8rem,3vw,2.6rem) 0 0;
+      justify-content:flex-start; gap:.5rem 1.5rem;
+    }
+    .hero .plate--tall{grid-column:2; max-width:none; margin:0}
+    .hero .plate--tall img{max-height:none; aspect-ratio:4/5; object-position:52% 38%}
+    .hero .plate figcaption{text-align:left}
+
+    /* sections: the number and title sit in a rail, everything else runs
+       in the wide column beside it, so the page fills instead of
+       centring a narrow measure inside a lot of empty paper */
+    .sec{
+      max-width:none; display:grid; align-items:start;
+      grid-template-columns:15rem minmax(0,1fr);
+      column-gap:clamp(2.5rem,4vw,4rem);
+      padding-inline:clamp(2rem,5vw,4.5rem);
+    }
+    .sec__head{
+      grid-column:1; grid-row:1; flex-direction:column;
+      align-items:flex-start; gap:.85rem; margin-bottom:0;
+    }
+    .sec h2{font-size:2.15rem}
+    .sec > *:not(.sec__head){grid-column:2}
+    .lede{font-size:1.28rem; max-width:44rem}
+
+    /* photographs, given room */
+    .sheet__in > .plate{margin-inline:0}
+    .sheet__in > .plate img{max-height:min(78vh,44rem); object-fit:cover}
+    .plate--wide{margin-inline:0}
+    .plate--wide img{max-height:none; aspect-ratio:2/1}
+    /* single plates align to the column they sit in rather than
+       centring inside it, which reads as floating */
+    .sec .plate--portrait{max-width:34rem; margin-inline:0}
+    .sec .plate--half{max-width:42rem; margin-inline:0}
+    /* the two room plates share one baseline instead of stacking */
+    .pair{grid-template-columns:1fr 1.3fr; align-items:start}
+    .pair .plate{max-width:none; margin:0}
+    .pair .plate img{max-height:none; height:min(60vh,32rem); object-fit:cover}
+    /* one height for both photos in a two-up, so they share a baseline
+       instead of one dangling below the other */
+    .two .plate img{max-height:none; height:min(44vh,23rem); object-fit:cover}
+
+    /* gallery as a mosaic — the first plate anchors it at four times
+       the area of its neighbours, which gives the grid a subject */
+    .gal figure{display:flex; flex-direction:column; margin:0}
+    .gal button{flex:1 1 auto}
+    .gal figure:first-child{grid-column:span 2; grid-row:span 2}
+    .gal figure:first-child img{aspect-ratio:auto; height:100%}
+  }
 </style>
 </head>
 <body>
 <div class="sheet"><div class="sheet__in">
 
+  <div class="hero">
+  <div class="hero__text">
   <header class="head">
     <svg class="alpona" viewBox="0 0 120 78" fill="none" stroke="#a8442a" stroke-width="1.2" aria-hidden="true">
       <path d="M60 8c-5 9-5 17 0 24 5-7 5-15 0-24Z"/>
@@ -221,11 +279,13 @@
     <span class="cap">Two kilometres from the station</span>
     <span class="cap">No curfew</span>
   </div>
+  </div>
 
   <figure class="plate plate--tall">
     <img src="img/facade.jpg" alt="The front of Mitra Stay: a cream house with oxblood brick trim, arched windows and a curved balcony, seen through the leaves of a teak tree.">
     <figcaption>The house from the lane, through the teak.</figcaption>
   </figure>
+  </div>
 
   <section class="sec" id="house">
     <div class="sec__head"><span class="num">01</span><h2>The <em>House</em></h2></div>
@@ -301,22 +361,21 @@
       <img src="img/rhero.jpg" alt="A bedroom with a carved wooden bed and floral bedcover, leaf-print curtains, framed photographs on narrow shelves, a cane chair, and a polished wooden door standing open to the balcony.">
       <figcaption>The cane chair by the window, and the wooden door out to the balcony.</figcaption>
     </figure>
-    <figure class="plate plate--portrait">
-      <img src="img/rhero2.jpg" alt="A bedroom with a pink-panelled ceiling, a green ceiling fan, blue checked bedspread on a wooden storage bed, a tall almirah, a framed pattachitra of Ganesha, and block-print curtains on two walls.">
-      <figcaption>The panelled ceiling, and curtains on two sides — this room takes light from both.</figcaption>
-    </figure>
-    <figure class="plate plate--half">
-      <img src="img/rhero3.jpg" alt="A large high-ceilinged room with a yellow checked bedspread on a wooden bed, ceiling fan, air conditioner, a shelf of books and curios, and an open door through to the balcony.">
-      <figcaption>High ceilings, fan and air conditioning both, and the balcony door left standing open.</figcaption>
-    </figure>
+    <div class="pair">
+      <figure class="plate plate--portrait">
+        <img src="img/rhero2.jpg" alt="A bedroom with a pink-panelled ceiling, a green ceiling fan, blue checked bedspread on a wooden storage bed, a tall almirah, a framed pattachitra of Ganesha, and block-print curtains on two walls.">
+        <figcaption>The panelled ceiling, and curtains on two sides — this room takes light from both.</figcaption>
+      </figure>
+      <figure class="plate plate--half">
+        <img src="img/rhero3.jpg" alt="A large high-ceilinged room with a yellow checked bedspread on a wooden bed, ceiling fan, air conditioner, a shelf of books and curios, and an open door through to the balcony.">
+        <figcaption>High ceilings, fan and air conditioning both, and the balcony door left standing open.</figcaption>
+      </figure>
+    </div>
     <div class="gal">
       <figure><button type="button" data-cap="Storage under the bed, tree-print curtains, light off the grey marble floor."><img src="img/r1.jpg" alt="A bright bedroom with a wooden storage bed, bird-print bedcover, block-print curtains and an air conditioner."></button><figcaption>Storage under the bed; grey marble underfoot.</figcaption></figure>
       <figure><button type="button" data-cap="One of the rooms with a table of its own — you can eat in, not only sleep in."><img src="img/r2.jpg" alt="A room with a dining table and four wooden chairs beside the bed, a horse painting on the wall and an iron-grille window."></button><figcaption>A table of your own.</figcaption></figure>
       <figure><button type="button" data-cap="Built-in niche shelves holding brass, terracotta and small framed prints."><img src="img/r4.jpg" alt="A bedroom with built-in white niche shelves holding brass and terracotta objects, a wooden cupboard and a doorway through to the next room."></button><figcaption>Niche shelves, and years of collected brass.</figcaption></figure>
       <figure><button type="button" data-cap="Two rooms that open into one another — the arrangement families usually ask for."><img src="img/r6.jpg" alt="A bedroom with a purple and yellow plaid bedspread and an open doorway showing a second bed in the adjoining room."></button><figcaption>Two rooms that open into each other.</figcaption></figure>
-      <figure><button type="button" data-cap="The simplest room in the house, with a kettle and a fold-away table."><img src="img/r8.jpg" alt="A small simple room with a green bedcover, a standing fan, a shelf, and a blue folding table holding an electric kettle."></button><figcaption>The simplest room, with a kettle.</figcaption></figure>
-      <figure><button type="button" data-cap="A washroom of your own, with a geyser over the shower and hot water whenever you want it."><img src="img/g7.jpg" alt="A washroom with pebble-textured white tiles, a toilet, a shower with an electric geyser above it, and a block-print curtain at the window."></button><figcaption>Geyser over the shower; hot water all day.</figcaption></figure>
-      <figure><button type="button" data-cap="Every room has its own washroom — none are shared."><img src="img/g8.jpg" alt="A washroom with beige marbled tiles, a toilet, a health faucet and a blue bucket."></button><figcaption>Private, in every one of the six.</figcaption></figure>
       <figure><button type="button" data-cap="The outside stair to the upper rooms — which is how the balconies get their own entry and exit."><img src="img/g9.jpg" alt="An external red-painted iron staircase against a cream wall, with a purple bicycle parked beneath it on red-oxide tiles."></button><figcaption>The outside stair, and somebody's bicycle.</figcaption></figure>
       <figure><button type="button" data-cap="Chappals off at the door, as in any Bengali house."><img src="img/g10.jpg" alt="A small dark red wooden shoe rack against a white wall, holding two pairs of rubber slippers."></button><figcaption>Chappals off at the door.</figcaption></figure>
     </div>
@@ -336,14 +395,6 @@
         <img src="img/pdin.jpg" alt="A glass-topped wooden dining table with carved chairs, block-print seat cushions, Bankura terracotta horses as a centrepiece, and a cane chair beside it.">
         <figcaption>And somewhere to sit down and eat it, with the Bankura horses looking on.</figcaption>
       </figure>
-    </div>
-    <div class="gal" style="margin-top:1.4rem">
-      <figure><button type="button" data-cap="Green marble counter, a single burner, and the window over the sink."><img src="img/g1.jpg" alt="A green marble kitchen counter with a single-burner gas stove, a stainless sink, dish soap and a window looking onto banana leaves."></button><figcaption>A window over the sink.</figcaption></figure>
-      <figure><button type="button" data-cap="Plates, glasses, knives, a chopping board — and a few sweets put out before you arrive."><img src="img/g2.jpg" alt="A kitchen counter with a cutlery caddy, plates, glasses, blue mugs on a tray, storage jars, an orange chopping board and a plate of wrapped sweets."></button><figcaption>Set out before you arrive.</figcaption></figure>
-      <figure><button type="button" data-cap="A smaller kitchen — water dispenser, stove, and the pots stacked below."><img src="img/g3.jpg" alt="A small kitchen through an open wooden door: a blue water dispenser, a gas stove on a green marble counter, and pressure cookers and pans stacked in the shelf below."></button><figcaption>Cookers and pans, stacked below.</figcaption></figure>
-      <figure><button type="button" data-cap="Jars, glasses, cups and the kettle, on shelves cut into the wall."><img src="img/g4.jpg" alt="Four shelves recessed into a white wall holding storage jars, glasses, teacups, a pan and a black kettle."></button><figcaption>Jars and cups, in the wall itself.</figcaption></figure>
-      <figure><button type="button" data-cap="Karai, pressure cooker, tawa, chopping board — enough to cook a proper meal, not just boil an egg."><img src="img/g5.jpg" alt="Recessed kitchen shelves holding a karai, lids, a saucepan, a baking tray, a knife and an orange chopping board."></button><figcaption>Enough to cook properly with.</figcaption></figure>
-      <figure><button type="button" data-cap="The kitchen shelves, and the door straight through to the room."><img src="img/g6.jpg" alt="A tall recessed shelf unit of pots and jars beside an open door looking through into the bedroom with its bookshelf and television."></button><figcaption>The kitchen, a door from the bed.</figcaption></figure>
     </div>
     <p class="note" style="margin-bottom:1.6rem">A grocery store is next door and the market is a hundred metres on. If you would rather not cook at all, every other way to eat is below.</p>
     <ul class="led led--loose">
