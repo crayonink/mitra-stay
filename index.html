@@ -69,7 +69,7 @@
 
   /* plates */
   .plate{margin:clamp(1.8rem,4vw,2.6rem) var(--pad) 0}
-  .plate img{width:100%; border:1px solid var(--ink); filter:saturate(.93) sepia(.05)}
+  .plate img{width:100%; border:1px solid var(--faint); filter:saturate(.93) sepia(.05)}
   .plate figcaption{font-style:italic; color:var(--soft); font-size:.86rem; margin-top:.55rem; text-align:center}
   .plate--tall img{max-height:min(76vh,40rem); object-fit:cover; object-position:52% 42%}
   .plate--wide{margin:clamp(1.8rem,4vw,2.6rem) 0 0}
@@ -155,7 +155,7 @@
      both of which divide by three — four columns strands a lone photo */
   @media(min-width:760px){ .gal{grid-template-columns:repeat(3,1fr)} }
   .gal figure{margin:0}
-  .gal button{display:block; width:100%; padding:0; line-height:0; border:1px solid var(--ink); background:none; cursor:zoom-in; overflow:hidden}
+  .gal button{display:block; width:100%; padding:0; line-height:0; border:1px solid var(--faint); background:none; cursor:zoom-in; overflow:hidden}
   .gal img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:saturate(.93) sepia(.05); transition:transform .6s cubic-bezier(.2,.7,.2,1)}
   .gal button:hover img{transform:scale(1.03)}
   .gal figcaption{font-style:italic; color:var(--soft); font-size:.8rem; margin-top:.45rem; line-height:1.45}
