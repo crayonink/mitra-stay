@@ -268,7 +268,7 @@
     .gal--mosaic figure:first-child img{aspect-ratio:auto; height:100%}
     /* a room's own plates read as a set, all the same size */
     .gal--room{grid-template-columns:repeat(5,1fr)}
-    .gal--shared{grid-template-columns:repeat(3,1fr)}
+    .gal--three{grid-template-columns:repeat(3,1fr)}
   }
 </style>
 </head>
@@ -381,6 +381,7 @@
           <li><span class="k">A standing fan</span><span class="dots"></span><span class="v">no air conditioning</span></li>
           <li><span class="k">Study table</span><span class="dots"></span><span class="v">to work at</span></li>
           <li><span class="k">Window</span><span class="dots"></span><span class="v">onto the banana grove</span></li>
+          <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹600, unchanged</span></li>
         </ul>
         <div class="gal gal--room">
           <figure><button type="button" data-cap="The small room: a bed, a standing fan, and the study table with the kettle."><img src="img/room600-a.jpg" alt="A simple room with a green bedcover and block-print runner, a standing fan, a blue folding study table holding an electric kettle, and a framed picture on a white wall."></button><figcaption>The bed, the fan, the kettle.</figcaption></figure>
@@ -415,17 +416,39 @@
           <figure><button type="button" data-cap="The wardrobe side of the room, and the door through."><img src="img/room1300-d.jpg" alt="A bedroom with a bird-print bedcover, a wooden wardrobe, a small stool and a doorway leading out."></button><figcaption>The wardrobe side.</figcaption></figure>
           <figure><button type="button" data-cap="Its own washroom, with a geyser over the shower."><img src="img/room1300-bath.jpg" alt="A washroom with patterned wall tiles, a toilet, a wall-mounted basin and a blue bucket."></button><figcaption>Its own washroom.</figcaption></figure>
         </div>
-      </article>
-    </div>
 
-    <div class="shared">
-      <p class="cap">What the ₹1300 room shares, and with whom</p>
-      <p class="note">The sitting room, the dining room and the balcony belong to the ₹1300 room and to our father, who lives in the house. No other guest has the run of them. So it is a house you are staying in rather than a floor of one — quiet, and shared with one person, not with everybody.</p>
-      <div class="gal gal--shared">
-        <figure><button type="button" data-cap="The sitting room, with the cane sofas and the television."><img src="img/shared-living.jpg" alt="A long sitting room with cane sofas, a television on a stand, a low table and framed pictures on the walls."></button><figcaption>The sitting room.</figcaption></figure>
-        <figure><button type="button" data-cap="The dining room, through the doorway."><img src="img/shared-dining.jpg" alt="A dining table with chairs seen through a doorway, with a refrigerator and a washing machine against the far wall."></button><figcaption>The dining room.</figcaption></figure>
-        <figure><button type="button" data-cap="The curved balcony, with the pots and the trees beyond."><img src="img/shared-balcony.jpg" alt="A curved balcony with a polished marble floor, two potted plants on stands, and green trees filling the view beyond the railing."></button><figcaption>The balcony.</figcaption></figure>
-      </div>
+        <div class="shared">
+          <p class="cap">What this room shares, and with whom</p>
+          <p class="note">The sitting room, the dining room and the balcony belong to this room and to our father, who lives in the house. No other guest has the run of them. So it is a house you are staying in rather than a floor of one — quiet, and shared with one person, not with everybody.</p>
+          <div class="gal gal--three">
+            <figure><button type="button" data-cap="The sitting room, with the cane sofas and the television."><img src="img/shared-living.jpg" alt="A long sitting room with cane sofas, a television on a stand, a low table and framed pictures on the walls."></button><figcaption>The sitting room.</figcaption></figure>
+            <figure><button type="button" data-cap="The dining room, through the doorway."><img src="img/shared-dining.jpg" alt="A dining table with chairs seen through a doorway, with a refrigerator and a washing machine against the far wall."></button><figcaption>The dining room.</figcaption></figure>
+            <figure><button type="button" data-cap="The curved balcony, with the pots and the trees beyond."><img src="img/shared-balcony.jpg" alt="A curved balcony with a polished marble floor, two potted plants on stands, and green trees filling the view beyond the railing."></button><figcaption>The balcony.</figcaption></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <h3 class="room__line">
+          <span class="room__name">The big room, with a terrace of its own</span>
+          <span class="dots"></span>
+          <span class="room__rate">₹1500</span>
+        </h3>
+        <p class="room__note">The largest room we let, and the only one with its own terrace — the marigolds and the bougainvillea are outside this door and no one else's. A comfortable bed under a panelled ceiling, and a washroom of its own with a geyser.</p>
+        <ul class="led">
+          <li><span class="k">A private terrace</span><span class="dots"></span><span class="v">attached, not shared</span></li>
+          <li><span class="k">Second floor</span><span class="dots"></span><span class="v">up two flights</span></li>
+          <li><span class="k">Attached private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
+          <li><span class="k">The room itself</span><span class="dots"></span><span class="v">the biggest in the house</span></li>
+          <li><span class="k">Our father's kitchen</span><span class="dots"></span><span class="v">on request, small charge</span></li>
+          <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹2500 a night</span></li>
+        </ul>
+        <div class="gal gal--three">
+          <figure><button type="button" data-cap="The terrace outside the door — the marigolds, the bougainvillea, and somewhere to sit out the afternoon."><img src="img/room1500-terrace.jpg" alt="A private terrace with rows of marigolds in terracotta pots, bougainvillea in flower, and two people sitting at a round table beside the room door."></button><figcaption>Its own terrace, and the marigolds.</figcaption></figure>
+          <figure><button type="button" data-cap="The room under its panelled ceiling, with the almirah and the block-print curtains."><img src="img/room1500-a.jpg" alt="A large bedroom with a pink-panelled ceiling, a green ceiling fan, a blue checked bedspread on a wooden bed, a tall almirah and block-print curtains."></button><figcaption>The bed, under the panelled ceiling.</figcaption></figure>
+          <figure><button type="button" data-cap="Its own washroom, with the geyser on the wall."><img src="img/room1500-bath.jpg" alt="A washroom with patterned wall tiles, a geyser mounted on the wall, a toilet, a mirrored cabinet and buckets."></button><figcaption>Its own washroom, and the geyser.</figcaption></figure>
+        </div>
+      </article>
     </div>
 
     <div class="figure">
@@ -459,10 +482,6 @@
     <p class="note">Bonolokkhi's tourist lunch must be booked by 10 AM; Bharat Sevasram Sangha at Muluk serves a satwik lunch on donation, called for the evening before. Cafés at Ratanpally and inside the campus. We send you the phone numbers for all of these once you have booked.</p>
   </section>
 
-  <figure class="plate">
-    <img src="img/terrace.jpg" alt="The terrace: bougainvillea in flower, rows of marigolds in terracotta pots, and a small round table with cane chairs beside the door.">
-    <figcaption>The terrace, with the marigolds in their pots.</figcaption>
-  </figure>
 
   <section class="sec" id="around">
     <div class="sec__head"><span class="num">04</span><h2>Around, <em>&amp; further out</em></h2></div>
