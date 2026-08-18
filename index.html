@@ -82,6 +82,25 @@
 
   .pair{display:grid; gap:clamp(1.2rem,2.5vw,1.8rem)}
 
+  /* tariff: each room as a ledger line with its rate, then its plates */
+  .tariff{margin-top:clamp(2.4rem,5vw,3.4rem)}
+  .room{margin-top:clamp(1.8rem,3.5vw,2.6rem); padding-top:clamp(1.2rem,2.5vw,1.7rem); border-top:1px solid var(--ink)}
+  .room__line{
+    display:flex; align-items:baseline; gap:.55rem; margin:0; font-weight:400;
+    font-size:clamp(1.1rem,2.2vw,1.32rem); font-variation-settings:"opsz" 24,"WONK" 1;
+  }
+  .room__name{font-style:italic}
+  .room__rate{
+    white-space:nowrap; color:var(--rust); font-style:normal;
+    font-size:clamp(1.5rem,3.4vw,2.1rem); line-height:1;
+    font-variation-settings:"opsz" 96,"WONK" 1; letter-spacing:-.01em;
+  }
+  .room__note{margin:.75rem 0 0}
+  .room .led{margin-top:.9rem}
+  .gal--room{margin-top:1.2rem}
+  .shared{margin-top:clamp(2.4rem,5vw,3.4rem)}
+  .shared .note{max-width:38rem}
+
   /* sections */
   .sec{padding:clamp(2.6rem,6vw,4.5rem) var(--pad) 0; max-width:66rem; margin:0 auto}
   .sec__head{display:flex; align-items:baseline; gap:.9rem; margin-bottom:1.4rem}
@@ -245,8 +264,10 @@
        the area of its neighbours, which gives the grid a subject */
     .gal figure{display:flex; flex-direction:column; margin:0}
     .gal button{flex:1 1 auto}
-    .gal figure:first-child{grid-column:span 2; grid-row:span 2}
-    .gal figure:first-child img{aspect-ratio:auto; height:100%}
+    .gal--mosaic figure:first-child{grid-column:span 2; grid-row:span 2}
+    .gal--mosaic figure:first-child img{aspect-ratio:auto; height:100%}
+    /* a room's own plates read as a set, all the same size */
+    .gal--room{grid-template-columns:repeat(4,1fr)}
   }
 </style>
 </head>
@@ -326,6 +347,9 @@
           <li><span class="k">Private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
           <li><span class="k">Private balcony</span><span class="dots"></span><span class="v">own entry &amp; exit</span></li>
           <li><span class="k">Air conditioning</span><span class="dots"></span><span class="v">and a ceiling fan</span></li>
+          <li><span class="k">Bedsheets</span><span class="dots"></span><span class="v">pure cotton, fresh</span></li>
+          <li><span class="k">Towels</span><span class="dots"></span><span class="v">good ones, not thin</span></li>
+          <li><span class="k">Electric kettle</span><span class="dots"></span><span class="v">in the room</span></li>
           <li><span class="k">Wi-Fi</span><span class="dots"></span><span class="v">free, work-ready</span></li>
           <li><span class="k">Parking</span><span class="dots"></span><span class="v">in front of the house</span></li>
         </ul>
@@ -339,6 +363,61 @@
           <li><span class="k">Market</span><span class="dots"></span><span class="v num-v">100 m</span></li>
         </ul>
         <p class="note">Say so when you book if you want one — there are only four, and they go first.</p>
+      </div>
+    </div>
+
+    <div class="tariff">
+      <p class="cap">What each room costs, by the night</p>
+
+      <article class="room">
+        <h3 class="room__line">
+          <span class="room__name">The small room</span>
+          <span class="dots"></span>
+          <span class="room__rate">₹600</span>
+        </h3>
+        <p class="room__note">The plainest room we let, and priced accordingly. A bed, a fan, a study table with the kettle on it, and a window onto the banana grove. Nothing decorative that isn't already in the house.</p>
+        <ul class="led">
+          <li><span class="k">Study table</span><span class="dots"></span><span class="v">to work at</span></li>
+          <li><span class="k">Window</span><span class="dots"></span><span class="v">onto the banana grove</span></li>
+        </ul>
+        <div class="gal gal--room">
+          <figure><button type="button" data-cap="The small room: a bed, a standing fan, and the study table with the kettle."><img src="img/room600-a.jpg" alt="A simple room with a green bedcover and block-print runner, a standing fan, a blue folding study table holding an electric kettle, and a framed picture on a white wall."></button><figcaption>The bed, the fan, the kettle.</figcaption></figure>
+          <figure><button type="button" data-cap="The room from the doorway, with its own wooden door."><img src="img/room600-b.jpg" alt="A small room seen from the doorway: a wooden door, a standing fan and a bed with a green cover."></button><figcaption>Its own door.</figcaption></figure>
+          <figure><button type="button" data-cap="The kettle, the mirror, and the hooks the keys hang on."><img src="img/room600-c.jpg" alt="An electric kettle on a blue folding table below a dark framed mirror, with paper hangings and a row of key hooks on the wall."></button><figcaption>Keys on the hook by the mirror.</figcaption></figure>
+          <figure><button type="button" data-cap="The window, and the banana grove behind the house."><img src="img/room600-d.jpg" alt="The view from the window: a leafy tree and red earth beyond a low garden wall."></button><figcaption>The window, and what is behind it.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="room">
+        <h3 class="room__line">
+          <span class="room__name">The double, with air conditioning</span>
+          <span class="dots"></span>
+          <span class="room__rate">₹1300</span>
+        </h3>
+        <p class="room__note">A proper double: air conditioning, a wooden almirah with glass doors, and a dressing table with a mirror that has been in the house a long time. The dining room and the balcony beyond it are shared with the family.</p>
+        <ul class="led">
+          <li><span class="k">Air conditioning</span><span class="dots"></span><span class="v">and a ceiling fan</span></li>
+          <li><span class="k">Almirah &amp; dressing table</span><span class="dots"></span><span class="v">wood, with mirror</span></li>
+          <li><span class="k">Dining room &amp; balcony</span><span class="dots"></span><span class="v">shared with the family</span></li>
+          <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹2000 a night</span></li>
+        </ul>
+        <p class="note">The December rate covers the Mela days, when the town fills up and rooms go early.</p>
+        <div class="gal gal--room">
+          <figure><button type="button" data-cap="The double bed, with the air conditioner above and light from two windows."><img src="img/room1300-a.jpg" alt="A bedroom with a wooden double bed under a bird-print cover, an air conditioner on the wall, curtained windows and a red patterned rug."></button><figcaption>The bed, and the air conditioner.</figcaption></figure>
+          <figure><button type="button" data-cap="The almirah with its glass doors, and the dressing mirror beside it."><img src="img/room1300-b.jpg" alt="A bedroom with a tall wooden almirah with glass doors, a dressing mirror, a clothes hanger on the wall and a bird-print bedcover."></button><figcaption>The almirah, and the long mirror.</figcaption></figure>
+          <figure><button type="button" data-cap="The dressing table, and the cabinet of things nobody has moved in years."><img src="img/room1300-c.jpg" alt="A wooden dressing table with a tall mirror beside a glass-fronted wooden cabinet holding household objects."></button><figcaption>The dressing table.</figcaption></figure>
+          <figure><button type="button" data-cap="The wardrobe side of the room, and the door through."><img src="img/room1300-d.jpg" alt="A bedroom with a bird-print bedcover, a wooden wardrobe, a small stool and a doorway leading out."></button><figcaption>The wardrobe side.</figcaption></figure>
+        </div>
+      </article>
+    </div>
+
+    <div class="shared">
+      <p class="cap">Shared with the family</p>
+      <p class="note">This is a house people live in, not a hotel floor. The dining room and the balcony are common ground — you are welcome in both, and so is everyone else.</p>
+      <div class="gal gal--room">
+        <figure><button type="button" data-cap="The sitting room, with the cane sofas and the television."><img src="img/shared-living.jpg" alt="A long sitting room with cane sofas, a television on a stand, a low table and framed pictures on the walls."></button><figcaption>The sitting room.</figcaption></figure>
+        <figure><button type="button" data-cap="The dining room, through the doorway."><img src="img/shared-dining.jpg" alt="A dining table with chairs seen through a doorway, with a refrigerator and a washing machine against the far wall."></button><figcaption>The dining room.</figcaption></figure>
+        <figure><button type="button" data-cap="The curved balcony, with the pots and the trees beyond."><img src="img/shared-balcony.jpg" alt="A curved balcony with a polished marble floor, two potted plants on stands, and green trees filling the view beyond the railing."></button><figcaption>The balcony.</figcaption></figure>
       </div>
     </div>
 
@@ -371,7 +450,7 @@
         <figcaption>High ceilings, fan and air conditioning both, and the balcony door left standing open.</figcaption>
       </figure>
     </div>
-    <div class="gal">
+    <div class="gal gal--mosaic">
       <figure><button type="button" data-cap="Storage under the bed, tree-print curtains, light off the grey marble floor."><img src="img/r1.jpg" alt="A bright bedroom with a wooden storage bed, bird-print bedcover, block-print curtains and an air conditioner."></button><figcaption>Storage under the bed; grey marble underfoot.</figcaption></figure>
       <figure><button type="button" data-cap="One of the rooms with a table of its own — you can eat in, not only sleep in."><img src="img/r2.jpg" alt="A room with a dining table and four wooden chairs beside the bed, a horse painting on the wall and an iron-grille window."></button><figcaption>A table of your own.</figcaption></figure>
       <figure><button type="button" data-cap="Built-in niche shelves holding brass, terracotta and small framed prints."><img src="img/r4.jpg" alt="A bedroom with built-in white niche shelves holding brass and terracotta objects, a wooden cupboard and a doorway through to the next room."></button><figcaption>Niche shelves, and years of collected brass.</figcaption></figure>
