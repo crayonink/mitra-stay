@@ -21,7 +21,8 @@
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
+    margin:0; padding-inline:clamp(.5rem,1.6vw,1.1rem);
+    background:var(--paper); color:var(--ink);
     font-family:"Fraunces",Georgia,serif;
     font-variation-settings:"opsz" 14,"WONK" 1,"SOFT" 0;
     font-weight:400; font-size:clamp(1rem,.4vw + .92rem,1.06rem); line-height:1.68;
@@ -33,7 +34,8 @@
   /* the printed frame, as on the receipt */
   .sheet{
     border:1.5px solid var(--ink);
-    margin:clamp(.5rem,1.6vw,1.1rem);
+    margin:clamp(.5rem,1.6vw,1.1rem) auto;
+    max-width:82rem;          /* it is a sheet of paper, not a billboard */
     padding:clamp(.35rem,.8vw,.6rem);
   }
   .sheet__in{border:1px solid var(--rust); padding-bottom:clamp(2rem,5vw,3.5rem)}
@@ -53,8 +55,11 @@
     font-weight:400; font-size:clamp(2.9rem,10vw,5.6rem); line-height:.92;
     letter-spacing:-.025em; margin:0;
   }
-  .head .bnline{font-size:clamp(1rem,2.6vw,1.35rem); color:var(--rust); margin:.7rem 0 0}
-  .head .addr{font-style:italic; color:var(--soft); margin:.8rem 0 0; font-size:clamp(.95rem,1.6vw,1.05rem)}
+  /* p has a 36rem measure; in centred blocks it must also be centred,
+     or the box sits hard left of the heading above it */
+  .head p,.close p,.figure p{margin-left:auto; margin-right:auto}
+  .head .bnline{font-size:clamp(1rem,2.6vw,1.35rem); color:var(--rust); margin:.7rem auto 0}
+  .head .addr{font-style:italic; color:var(--soft); margin:.8rem auto 0; font-size:clamp(.95rem,1.6vw,1.05rem)}
   .band{
     border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
     margin:clamp(1.4rem,3.5vw,2.2rem) var(--pad) 0;
@@ -73,6 +78,20 @@
   .plate--portrait + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
   .plate--half{max-width:36rem; margin-left:auto; margin-right:auto}
   .plate--half + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
+
+  /* desktop plate proportions — phones keep the rules above */
+  @media(min-width:900px){
+    /* the full-bleed plates, capped so one photo isn't the whole screen */
+    .sheet__in > .plate img{max-height:min(74vh,40rem); object-fit:cover}
+    /* facade.jpg is portrait (957x1300): give it a portrait frame rather
+       than cropping four fifths of it away to span the width */
+    .plate--tall{max-width:38rem; margin-left:auto; margin-right:auto}
+    .sheet__in > .plate--tall img{max-height:none; aspect-ratio:4/5; object-position:52% 38%}
+    .plate--wide img{max-height:none; aspect-ratio:16/9}
+    /* portrait shots inside a two-column block run far past the prose
+       beside them; cap them so the columns end near each other */
+    .two .plate img{max-height:24rem; object-fit:cover}
+  }
 
   /* sections */
   .sec{padding:clamp(2.6rem,6vw,4.5rem) var(--pad) 0; max-width:66rem; margin:0 auto}
@@ -98,7 +117,9 @@
   @media(min-width:860px){ .two{grid-template-columns:1fr 1fr} }
 
   /* ledger with dot leaders */
-  .led{list-style:none; margin:1.4rem 0 0; padding:0}
+  /* a receipt line has a short leader; across a 66rem section the dots
+     run for half a metre and stop reading as one */
+  .led{list-style:none; margin:1.4rem 0 0; padding:0; max-width:44rem}
   .led li{display:flex; align-items:baseline; gap:.45rem; padding:.42rem 0}
   .led .k{white-space:nowrap}
   .led .k b{font-weight:600}
@@ -122,8 +143,9 @@
 
   /* gallery of plates */
   .gal{display:grid; gap:clamp(.7rem,1.6vw,1.2rem); grid-template-columns:repeat(2,1fr); margin-top:1.8rem}
+  /* stays at three across on desktop: the galleries hold 9 and 6 plates,
+     both of which divide by three — four columns strands a lone photo */
   @media(min-width:760px){ .gal{grid-template-columns:repeat(3,1fr)} }
-  @media(min-width:1120px){ .gal{grid-template-columns:repeat(4,1fr)} }
   .gal figure{margin:0}
   .gal button{display:block; width:100%; padding:0; line-height:0; border:1px solid var(--ink); background:none; cursor:zoom-in; overflow:hidden}
   .gal img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:saturate(.93) sepia(.05); transition:transform .6s cubic-bezier(.2,.7,.2,1)}
