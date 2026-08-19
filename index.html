@@ -255,9 +255,15 @@
       column-gap:clamp(2.5rem,4vw,4rem);
       padding-inline:clamp(2rem,5vw,4.5rem);
     }
+    /* the rail is tall and the heading is short, so left at the top it
+       strands a column of empty paper beside every long section.
+       Spanning the rows and sticking keeps the number and title beside
+       whatever you are actually reading. The extra implicit rows are
+       empty and collapse to nothing. */
     .sec__head{
-      grid-column:1; grid-row:1; flex-direction:column;
-      align-items:flex-start; gap:.85rem; margin-bottom:0;
+      grid-column:1; grid-row:1/span 50; align-self:start;
+      position:sticky; top:clamp(1.5rem,5vh,3rem);
+      flex-direction:column; align-items:flex-start; gap:.85rem; margin-bottom:0;
     }
     .sec h2{font-size:2.15rem}
     .sec > *:not(.sec__head){grid-column:2}
@@ -289,14 +295,15 @@
     /* a room's own plates read as a set, all the same size */
     .gal--room{grid-template-columns:repeat(5,1fr)}
     .gal--three{grid-template-columns:repeat(3,1fr)}
-    /* the cottage runs to ten plates, so it gets three across rather
-       than five. First and last span two columns: ten figures then
-       occupy twelve cells, which is four rows exactly and leaves no
-       lone photograph stranded on the end */
-    .gal--cottage{grid-template-columns:repeat(3,1fr)}
-    .gal--cottage figure:first-child,
-    .gal--cottage figure:last-child{grid-column:span 2}
-    .gal--cottage img{aspect-ratio:auto; height:min(32vh,17rem)}
+    /* a full set of a room's plates: three across, not five, so each
+       one is big enough to read. Where the count leaves a remainder of
+       one over three, the first and last span two columns — that adds
+       two cells and squares the grid off, so no lone photograph is
+       stranded on the end. */
+    .gal--set{grid-template-columns:repeat(3,1fr)}
+    .gal--set img{aspect-ratio:auto; height:min(32vh,17rem)}
+    .gal--span2 figure:first-child,
+    .gal--span2 figure:last-child{grid-column:span 2}
   }
 </style>
 </head>
@@ -419,18 +426,26 @@
           <li><span class="k">Window</span><span class="dots"></span><span class="v">onto the banana grove</span></li>
           <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹600, unchanged</span></li>
         </ul>
-        <div class="gal gal--room">
+        <div class="gal gal--set gal--span2">
           <figure><button type="button" data-cap="The small room: a bed, a standing fan, and the study table with the kettle."><img src="img/room600-a.jpg" alt="A simple room with a green bedcover and block-print runner, a standing fan, a blue folding study table holding an electric kettle, and a framed picture on a white wall."></button><figcaption>The bed, the fan, the kettle.</figcaption></figure>
+          <figure><button type="button" data-cap="The bed made up, and the door standing open to the courtyard."><img src="img/room600-e.jpg" alt="A single bed with a green cover and block-print runner, a framed print above it, and a door open to the red-oxide courtyard beyond."></button><figcaption>The door, open to the courtyard.</figcaption></figure>
+          <figure><button type="button" data-cap="The whole room at a glance — clock, fan, prints, and the table with the kettle."><img src="img/room600-j.jpg" alt="A small white room with a wall clock, a standing fan, framed prints on the wall and a bed with a blue folding table holding a kettle."></button><figcaption>The room, at a glance.</figcaption></figure>
+          <figure><button type="button" data-cap="The standing fan, and the pattachitra on the wall above the bed."><img src="img/room600-f.jpg" alt="A standing fan beside a bed, with a framed pattachitra painting on the wall and a shelf holding a small figurine."></button><figcaption>The fan, and the pattachitra.</figcaption></figure>
+          <figure><button type="button" data-cap="The window with its wooden shutter, and the kettle on the table below."><img src="img/room600-g.jpg" alt="A window with a wooden shutter and block-print curtain, a dark framed mirror, and an electric kettle on a blue folding table."></button><figcaption>The shutter, and the kettle.</figcaption></figure>
+          <figure><button type="button" data-cap="The mirror, and the light off the curtain in the afternoon."><img src="img/room600-h.jpg" alt="A block-print curtain, a dark carved mirror on the wall and an electric kettle on a blue folding table on the bed."></button><figcaption>The mirror, and the curtain.</figcaption></figure>
+          <figure><button type="button" data-cap="Looking back from the window to the door."><img src="img/room600-i.jpg" alt="A small room looking towards a wooden door, with a standing fan, a bed and a patterned tiled floor."></button><figcaption>Back towards the door.</figcaption></figure>
           <figure><button type="button" data-cap="The room from the doorway, with its own wooden door."><img src="img/room600-b.jpg" alt="A small room seen from the doorway: a wooden door, a standing fan and a bed with a green cover."></button><figcaption>Its own door.</figcaption></figure>
           <figure><button type="button" data-cap="The kettle, the mirror, and the hooks the keys hang on."><img src="img/room600-c.jpg" alt="An electric kettle on a blue folding table below a dark framed mirror, with paper hangings and a row of key hooks on the wall."></button><figcaption>Keys on the hook by the mirror.</figcaption></figure>
-          <figure><button type="button" data-cap="The window, and the banana grove behind the house."><img src="img/room600-d.jpg" alt="The view from the window: a leafy tree and red earth beyond a low garden wall."></button><figcaption>The window, and what is behind it.</figcaption></figure>
           <figure><button type="button" data-cap="Its own washroom — not shared, at this price or any other."><img src="img/room600-bath.jpg" alt="A washroom with checkered brown and cream wall tiles, a toilet, a hand shower and a bucket."></button><figcaption>Its own washroom.</figcaption></figure>
+          <figure><button type="button" data-cap="The window, and the banana grove behind the house."><img src="img/room600-d.jpg" alt="The view from the window: a leafy tree and red earth beyond a low garden wall."></button><figcaption>The window, and what is behind it.</figcaption></figure>
+          <figure><button type="button" data-cap="The outside stair, and somebody's bicycle underneath it."><img src="img/room600-k.jpg" alt="A red-painted iron staircase against a cream wall with a purple bicycle parked beneath it on red-oxide tiles."></button><figcaption>The stair, and the bicycle.</figcaption></figure>
+          <figure><button type="button" data-cap="The banana grove the window looks onto."><img src="img/room600-l.jpg" alt="A grove of banana plants growing close behind the house, with green fields beyond."></button><figcaption>The banana grove.</figcaption></figure>
         </div>
       </article>
 
       <article class="room" data-rate="1300" data-rank="4">
         <h3 class="room__line">
-          <span class="room__name">The double, with air conditioning</span>
+          <span class="room__name">The double, in the house itself</span>
           <span class="dots"></span>
           <span class="room__rate">₹1300</span>
         </h3>
@@ -446,12 +461,14 @@
           <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹2000 a night</span></li>
         </ul>
         <p class="note">The December rate covers the Mela days, when the town fills up and rooms go early.</p>
-        <div class="gal gal--room">
+        <div class="gal gal--set gal--span2">
           <figure><button type="button" data-cap="The double bed, with the air conditioner above and light from two windows."><img src="img/room1300-a.jpg" alt="A bedroom with a wooden double bed under a bird-print cover, an air conditioner on the wall, curtained windows and a red patterned rug."></button><figcaption>The bed, and the air conditioner.</figcaption></figure>
+          <figure><button type="button" data-cap="The dressing table and the mirror, with the red rug down the side of the bed."><img src="img/room1300-e.jpg" alt="A bedroom with a bird-print bedcover, a wooden dressing table with a tall mirror, and a red diamond-patterned rug on the floor."></button><figcaption>The rug, down the side of the bed.</figcaption></figure>
           <figure><button type="button" data-cap="The almirah with its glass doors, and the dressing mirror beside it."><img src="img/room1300-b.jpg" alt="A bedroom with a tall wooden almirah with glass doors, a dressing mirror, a clothes hanger on the wall and a bird-print bedcover."></button><figcaption>The almirah, and the long mirror.</figcaption></figure>
           <figure><button type="button" data-cap="The dressing table, and the cabinet of things nobody has moved in years."><img src="img/room1300-c.jpg" alt="A wooden dressing table with a tall mirror beside a glass-fronted wooden cabinet holding household objects."></button><figcaption>The dressing table.</figcaption></figure>
-          <figure><button type="button" data-cap="The wardrobe side of the room, and the door through."><img src="img/room1300-d.jpg" alt="A bedroom with a bird-print bedcover, a wooden wardrobe, a small stool and a doorway leading out."></button><figcaption>The wardrobe side.</figcaption></figure>
           <figure><button type="button" data-cap="Its own washroom, with a geyser over the shower."><img src="img/room1300-bath.jpg" alt="A washroom with patterned wall tiles, a toilet, a wall-mounted basin and a blue bucket."></button><figcaption>Its own washroom.</figcaption></figure>
+          <figure><button type="button" data-cap="The basin, the shelf, and the light through the grille."><img src="img/room1300-bath2.jpg" alt="A washroom with patterned wall tiles, a wall-mounted basin, a shelf of toiletries, a health faucet and a blue bucket on a tiled floor."></button><figcaption>The basin, and the shelf.</figcaption></figure>
+          <figure><button type="button" data-cap="The wardrobe side of the room, and the door through."><img src="img/room1300-d.jpg" alt="A bedroom with a bird-print bedcover, a wooden wardrobe, a small stool and a doorway leading out."></button><figcaption>The wardrobe side.</figcaption></figure>
         </div>
 
         <div class="shared">
@@ -478,15 +495,17 @@
           <li><span class="k">A private terrace</span><span class="dots"></span><span class="v">attached, not shared</span></li>
           <li><span class="k">Second floor</span><span class="dots"></span><span class="v">up two flights</span></li>
           <li><span class="k">Attached private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
+          <li><span class="k">Air conditioning</span><span class="dots"></span><span class="v">and a ceiling fan</span></li>
           <li><span class="k">The room itself</span><span class="dots"></span><span class="v">the biggest in the house</span></li>
           <li><span class="k">Our father's kitchen</span><span class="dots"></span><span class="v">on request, small charge</span></li>
           <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹2500 a night</span></li>
         </ul>
-        <div class="gal gal--room">
+        <div class="gal gal--set">
           <figure><button type="button" data-cap="The room under its panelled ceiling, with the almirah and the block-print curtains."><img src="img/room1500-a.jpg" alt="A large bedroom with a pink-panelled ceiling, a green ceiling fan, a blue checked bedspread on a wooden bed, a tall almirah and block-print curtains."></button><figcaption>The bed, under the panelled ceiling.</figcaption></figure>
           <figure><button type="button" data-cap="Its own washroom, with the geyser on the wall."><img src="img/room1500-bath.jpg" alt="A washroom with patterned wall tiles, a geyser mounted on the wall, a toilet, a mirrored cabinet and buckets."></button><figcaption>Its own washroom, and the geyser.</figcaption></figure>
-          <figure><button type="button" data-cap="The terrace, tiled and planted — hibiscus, bougainvillea and a lemon in pots, with the trees over the parapet."><img src="img/room1500-roof-a.jpg" alt="A tiled roof terrace with potted hibiscus, bougainvillea and shrubs along a white parapet wall, with green trees beyond."></button><figcaption>The terrace, and what grows on it.</figcaption></figure>
           <figure><button type="button" data-cap="The door from the room straight out onto the terrace."><img src="img/room1500-roof-b.jpg" alt="A wooden door and window opening onto a tiled roof terrace with potted plants in terracotta pots."></button><figcaption>The door straight out onto it.</figcaption></figure>
+          <figure><button type="button" data-cap="The terrace, tiled and planted — hibiscus, bougainvillea and a lemon in pots, with the trees over the parapet."><img src="img/room1500-roof-a.jpg" alt="A tiled roof terrace with potted hibiscus, bougainvillea and shrubs along a white parapet wall, with green trees beyond."></button><figcaption>The terrace, and what grows on it.</figcaption></figure>
+          <figure><button type="button" data-cap="Along the terrace, with the pots in a row against the parapet."><img src="img/room1500-roof-d.jpg" alt="A tiled roof terrace with a row of potted shrubs and flowers along a white parapet wall and trees beyond."></button><figcaption>The pots, in a row.</figcaption></figure>
           <figure><button type="button" data-cap="The hibiscus, which flowers most of the year here."><img src="img/room1500-roof-c.jpg" alt="A hibiscus in a terracotta pot in yellow flower on a patterned tiled terrace."></button><figcaption>The hibiscus, in flower.</figcaption></figure>
         </div>
       </article>
@@ -509,7 +528,7 @@
           <li><span class="k">First floor</span><span class="dots"></span><span class="v">up one flight</span></li>
           <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹2500 a night</span></li>
         </ul>
-        <div class="gal gal--cottage">
+        <div class="gal gal--set gal--span2">
           <figure><button type="button" data-cap="The bed, the television, and the air conditioner above the curtain rail."><img src="img/cottage-a.jpg" alt="A bedroom with a double bed under a floral cover, a television on a wooden cabinet, block-print curtains and an air conditioner high on the wall."></button><figcaption>The bed, and the air conditioner.</figcaption></figure>
           <figure><button type="button" data-cap="The kitchen: gas on green marble, the sink, and the window onto the banana leaves."><img src="img/cottage-kitchen.jpg" alt="A kitchen counter of green marble with a gas stove, a stainless sink and a window looking onto banana leaves."></button><figcaption>Gas, sink, and the window.</figcaption></figure>
           <figure><button type="button" data-cap="The water dispenser, and the pots stacked in the shelf below."><img src="img/cottage-kitchen2.jpg" alt="A kitchen corner with a blue water dispenser on a counter, pots and pans stacked on the shelf below, beside an open wooden door."></button><figcaption>Filtered water, and the pots.</figcaption></figure>
