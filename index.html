@@ -91,6 +91,18 @@
 
   /* tariff: each room as a ledger line with its rate, then its plates */
   .tariff{margin-top:clamp(2.4rem,5vw,3.4rem)}
+  .sortbar{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:.45rem 1.2rem;
+    margin-top:.9rem; padding-bottom:.85rem; border-bottom:1px solid var(--faint);
+  }
+  .sortbtn{
+    font:inherit; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+    font-weight:600; font-variation-settings:"opsz" 9;
+    background:none; border:0; border-bottom:1px solid transparent;
+    padding:.15rem 0; color:var(--soft); cursor:pointer;
+  }
+  .sortbtn:hover{color:var(--ink)}
+  .sortbtn.is-on{color:var(--rust); border-bottom-color:var(--rust)}
   .room{margin-top:clamp(1.8rem,3.5vw,2.6rem); padding-top:clamp(1.2rem,2.5vw,1.7rem); border-top:1px solid var(--ink)}
   .room__line{
     display:flex; align-items:baseline; gap:.55rem; margin:0; font-weight:400;
@@ -384,7 +396,14 @@
     <div class="tariff">
       <p class="cap">What each room costs, by the night</p>
 
-      <article class="room">
+      <div class="sortbar">
+        <span class="cap">Order by</span>
+        <button type="button" class="sortbtn" data-sort="rank" aria-pressed="false">Most booked</button>
+        <button type="button" class="sortbtn is-on" data-sort="asc" aria-pressed="true">Price, low to high</button>
+        <button type="button" class="sortbtn" data-sort="desc" aria-pressed="false">Price, high to low</button>
+      </div>
+
+      <article class="room" data-rate="600" data-rank="3">
         <h3 class="room__line">
           <span class="room__name">The small room</span>
           <span class="dots"></span>
@@ -392,6 +411,7 @@
         </h3>
         <p class="room__note">The plainest room we let, and priced accordingly. A bed, a fan, a study table with the kettle on it, and a window onto the banana grove. Nothing decorative that isn't already in the house.</p>
         <ul class="led">
+          <li><span class="k">Sleeps</span><span class="dots"></span><span class="v num-v">one</span></li>
           <li><span class="k">Ground floor</span><span class="dots"></span><span class="v">no stairs to climb</span></li>
           <li><span class="k">Attached private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
           <li><span class="k">A standing fan</span><span class="dots"></span><span class="v">no air conditioning</span></li>
@@ -408,7 +428,7 @@
         </div>
       </article>
 
-      <article class="room">
+      <article class="room" data-rate="1300" data-rank="4">
         <h3 class="room__line">
           <span class="room__name">The double, with air conditioning</span>
           <span class="dots"></span>
@@ -416,6 +436,7 @@
         </h3>
         <p class="room__note">A proper double: air conditioning, a wooden almirah with glass doors, and a dressing table with a mirror that has been in the house a long time. The balcony, the dining room and the way in and out are all shared with the family — you come and go through the house, not by a door of your own.</p>
         <ul class="led">
+          <li><span class="k">Sleeps</span><span class="dots"></span><span class="v num-v">two at most</span></li>
           <li><span class="k">First floor</span><span class="dots"></span><span class="v">up one flight</span></li>
           <li><span class="k">Attached private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
           <li><span class="k">Air conditioning</span><span class="dots"></span><span class="v">and a ceiling fan</span></li>
@@ -444,7 +465,7 @@
         </div>
       </article>
 
-      <article class="room">
+      <article class="room" data-rate="1500" data-rank="2">
         <h3 class="room__line">
           <span class="room__name">The big room, with a terrace of its own</span>
           <span class="dots"></span>
@@ -452,6 +473,8 @@
         </h3>
         <p class="room__note">The largest room we let, and the only one with a terrace of its own — tiled, planted with hibiscus and bougainvillea in pots, and open to the trees over the parapet. It is yours while you are here, and nobody else's. A comfortable bed under a panelled ceiling, and a washroom of its own with a geyser.</p>
         <ul class="led">
+          <li><span class="k">Sleeps</span><span class="dots"></span><span class="v num-v">three at most</span></li>
+          <li><span class="k">An extra bed for the third</span><span class="dots"></span><span class="v">at no extra charge</span></li>
           <li><span class="k">A private terrace</span><span class="dots"></span><span class="v">attached, not shared</span></li>
           <li><span class="k">Second floor</span><span class="dots"></span><span class="v">up two flights</span></li>
           <li><span class="k">Attached private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
@@ -468,7 +491,7 @@
         </div>
       </article>
 
-      <article class="room">
+      <article class="room" data-rate="1800" data-rank="1">
         <h3 class="room__line">
           <span class="room__name">The cottage, with a kitchen of its own</span>
           <span class="dots"></span>
@@ -476,6 +499,8 @@
         </h3>
         <p class="room__note">The most self-contained thing we let. Its own way in and its own way out, so you need not come through the house at all — and a kitchen of your own, properly fitted, not a corner with a stove in it. A balcony with the banana leaves against the rail, and a washroom of its own.</p>
         <ul class="led">
+          <li><span class="k">Sleeps</span><span class="dots"></span><span class="v num-v">three at most</span></li>
+          <li><span class="k">An extra bed for the third</span><span class="dots"></span><span class="v">at no extra charge</span></li>
           <li><span class="k">Independent entry &amp; exit</span><span class="dots"></span><span class="v">your own door</span></li>
           <li><span class="k">A private kitchen</span><span class="dots"></span><span class="v">yours alone</span></li>
           <li><span class="k">Attached private washroom</span><span class="dots"></span><span class="v">geyser, hot water</span></li>
@@ -671,6 +696,33 @@
     en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{rootMargin:'0px 0px -8% 0px',threshold:.05});
   els.forEach(function(el){io.observe(el);});
+})();
+(function(){
+  var bar=document.querySelector('.sortbar'), tariff=document.querySelector('.tariff');
+  if(!bar||!tariff){return;}
+  var rooms=[].slice.call(tariff.querySelectorAll('.room'));
+  if(rooms.length<2){ bar.style.display='none'; return; }
+  function apply(mode){
+    var sorted=rooms.slice().sort(function(a,b){
+      if(mode==='rank'){ return (+a.getAttribute('data-rank'))-(+b.getAttribute('data-rank')); }
+      var x=+a.getAttribute('data-rate'), y=+b.getAttribute('data-rate');
+      return mode==='desc' ? y-x : x-y;
+    });
+    sorted.forEach(function(r){ tariff.appendChild(r); });
+    [].slice.call(bar.querySelectorAll('.sortbtn')).forEach(function(b){
+      var on = b.getAttribute('data-sort')===mode;
+      b.classList.toggle('is-on',on);
+      b.setAttribute('aria-pressed',on?'true':'false');
+    });
+  }
+  bar.addEventListener('click',function(e){
+    var b=e.target;
+    while(b&&b!==bar&&!b.getAttribute('data-sort')){ b=b.parentNode; }
+    if(b&&b!==bar){ apply(b.getAttribute('data-sort')); }
+  });
+  /* the markup is in price order so it reads sensibly without script;
+     most booked is what we want people to see, so apply it on load */
+  apply('rank');
 })();
 (function(){
   var lb=document.getElementById('lb'),img=document.getElementById('lbimg'),
