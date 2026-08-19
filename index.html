@@ -277,6 +277,14 @@
     /* a room's own plates read as a set, all the same size */
     .gal--room{grid-template-columns:repeat(5,1fr)}
     .gal--three{grid-template-columns:repeat(3,1fr)}
+    /* the cottage runs to ten plates, so it gets three across rather
+       than five. First and last span two columns: ten figures then
+       occupy twelve cells, which is four rows exactly and leaves no
+       lone photograph stranded on the end */
+    .gal--cottage{grid-template-columns:repeat(3,1fr)}
+    .gal--cottage figure:first-child,
+    .gal--cottage figure:last-child{grid-column:span 2}
+    .gal--cottage img{aspect-ratio:auto; height:min(32vh,17rem)}
   }
 </style>
 </head>
@@ -476,12 +484,17 @@
           <li><span class="k">First floor</span><span class="dots"></span><span class="v">up one flight</span></li>
           <li><span class="k"><b>21–31 December</b></span><span class="dots"></span><span class="v num-v">₹2500 a night</span></li>
         </ul>
-        <div class="gal gal--room">
+        <div class="gal gal--cottage">
           <figure><button type="button" data-cap="The bed, the television, and the air conditioner above the curtain rail."><img src="img/cottage-a.jpg" alt="A bedroom with a double bed under a floral cover, a television on a wooden cabinet, block-print curtains and an air conditioner high on the wall."></button><figcaption>The bed, and the air conditioner.</figcaption></figure>
           <figure><button type="button" data-cap="The kitchen: gas on green marble, the sink, and the window onto the banana leaves."><img src="img/cottage-kitchen.jpg" alt="A kitchen counter of green marble with a gas stove, a stainless sink and a window looking onto banana leaves."></button><figcaption>Gas, sink, and the window.</figcaption></figure>
+          <figure><button type="button" data-cap="The water dispenser, and the pots stacked in the shelf below."><img src="img/cottage-kitchen2.jpg" alt="A kitchen corner with a blue water dispenser on a counter, pots and pans stacked on the shelf below, beside an open wooden door."></button><figcaption>Filtered water, and the pots.</figcaption></figure>
+          <figure><button type="button" data-cap="Plates, mugs, jars and a chopping board — set out before you arrive."><img src="img/cottage-kitchen3.jpg" alt="A kitchen counter with plates, blue mugs on a tray, storage jars, cutlery and an orange chopping board."></button><figcaption>Set out before you arrive.</figcaption></figure>
           <figure><button type="button" data-cap="Somewhere to sit down and eat what you have cooked, with the Bankura horses looking on."><img src="img/cottage-dining.jpg" alt="A glass-topped wooden dining table with carved chairs and Bankura terracotta horses as a centrepiece."></button><figcaption>And somewhere to eat it.</figcaption></figure>
           <figure><button type="button" data-cap="The balcony, with the pots along the rail and the green beyond."><img src="img/cottage-balcony.jpg" alt="A balcony with a marble floor, an iron railing, potted plants along it and green trees beyond."></button><figcaption>Its own balcony.</figcaption></figure>
+          <figure><button type="button" data-cap="The balcony from inside, through the curtain, with the banana leaves against the rail."><img src="img/cottage-balcony2.jpg" alt="A balcony seen from inside through a white curtain, with banana leaves beyond the railing and a red-oxide floor."></button><figcaption>Through the curtain.</figcaption></figure>
+          <figure><button type="button" data-cap="Along the balcony, and out to the trees."><img src="img/cottage-balcony3.jpg" alt="A long balcony with a railing, potted plants and green trees filling the view beyond."></button><figcaption>Along, and out to the trees.</figcaption></figure>
           <figure><button type="button" data-cap="Its own washroom, with the health faucet and the geyser."><img src="img/cottage-bath.jpg" alt="A washroom with beige tiled walls, a toilet, a health faucet, a shower and a blue bucket."></button><figcaption>Its own washroom.</figcaption></figure>
+          <figure><button type="button" data-cap="Chappals off at the door, as in any Bengali house."><img src="img/cottage-chappals.jpg" alt="A dark red wooden shoe rack against a white wall holding two pairs of rubber slippers."></button><figcaption>Chappals off at the door.</figcaption></figure>
         </div>
       </article>
     </div>
