@@ -1,0 +1,330 @@
+  :root{
+    --paper:#f6efe1;
+    --ink:#211b14;
+    --soft:#6d5f4d;
+    --faint:#b3a189;
+    --mount:#fffdf8;
+    --rust:#a8442a;
+    --indigo:#3a4a63;
+    --pad:clamp(1.1rem,4vw,3.4rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; padding-inline:clamp(.5rem,1.6vw,1.1rem);
+    background:var(--paper); color:var(--ink);
+    font-family:"Fraunces",Georgia,serif;
+    font-variation-settings:"opsz" 14,"WONK" 1,"SOFT" 0;
+    font-weight:400; font-size:clamp(1rem,.4vw + .92rem,1.06rem); line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block}
+  a{color:inherit}
+
+  /* the printed frame, as on the receipt */
+  .sheet{
+    border:1.5px solid var(--ink);
+    margin:clamp(.5rem,1.6vw,1.1rem) auto;
+    max-width:88rem;          /* it is a sheet of paper, not a billboard */
+    padding:clamp(.35rem,.8vw,.6rem);
+  }
+  .sheet__in{border:1px solid var(--rust); padding-bottom:clamp(2rem,5vw,3.5rem)}
+
+  .bn{font-family:"Noto Serif Bengali",serif}
+  .cap{
+    font-size:.66rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--faint); font-variation-settings:"opsz" 9; font-weight:500;
+  }
+  .rust{color:var(--rust)}
+
+  /* masthead */
+  .head{text-align:center; padding:clamp(2.4rem,6vw,4.5rem) var(--pad) clamp(1.6rem,4vw,2.4rem)}
+  .alpona{width:clamp(74px,11vw,104px); height:auto; margin:0 auto clamp(1rem,2.5vw,1.6rem)}
+  .head h1{
+    font-variation-settings:"opsz" 144,"WONK" 1,"SOFT" 0;
+    font-weight:400; font-size:clamp(2.9rem,10vw,5.6rem); line-height:.92;
+    letter-spacing:-.025em; margin:0;
+  }
+  /* p has a 36rem measure; in centred blocks it must also be centred,
+     or the box sits hard left of the heading above it */
+  .head p,.close p,.figure p{margin-left:auto; margin-right:auto}
+  .head .bnline{font-size:clamp(1rem,2.6vw,1.35rem); color:var(--rust); margin:.7rem auto 0}
+  .head .addr{font-style:italic; color:var(--soft); margin:.8rem auto 0; font-size:clamp(.95rem,1.6vw,1.05rem)}
+  .band{
+    border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+    margin:clamp(1.4rem,3.5vw,2.2rem) var(--pad) 0;
+    padding:.65rem 0; display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem 1.6rem;
+  }
+
+  /* plates */
+  .plate{margin:clamp(1.8rem,4vw,2.6rem) var(--pad) 0}
+  /* a white mount, as a photograph is mounted on card — the paper is
+     warm and the photographs are warm, so without something neutral
+     between them the picture sinks into the page */
+  .plate img{
+    width:100%; border-radius:3px;
+    border:6px solid var(--mount); outline:1px solid var(--faint);
+  }
+  .plate figcaption{font-style:italic; color:var(--soft); font-size:.86rem; margin-top:.55rem; text-align:center}
+  .plate--tall img{max-height:min(76vh,40rem); object-fit:cover; object-position:52% 42%}
+  .plate--wide{margin:clamp(1.8rem,4vw,2.6rem) 0 0}
+  .plate--wide img{width:100%; max-height:min(70vh,34rem); object-fit:cover; object-position:50% 46%}
+  .plate--wide + .gal{margin-top:clamp(1.4rem,3vw,2rem)}
+  .plate--portrait{max-width:30rem; margin-left:auto; margin-right:auto}
+  .plate--portrait + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
+  .plate--half{max-width:36rem; margin-left:auto; margin-right:auto}
+  .plate--half + .gal{margin-top:clamp(1.6rem,3.5vw,2.4rem)}
+
+  .pair{display:grid; gap:clamp(1.2rem,2.5vw,1.8rem)}
+
+  /* tariff: each room as a ledger line with its rate, then its plates */
+  .tariff{margin-top:clamp(2.4rem,5vw,3.4rem)}
+  /* one plate on the index, the rest on the room's own page */
+  .gal--one{grid-template-columns:minmax(0,26rem)}
+  .roomlink{margin:1rem 0 0; max-width:none}
+  .roomlink a{
+    font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
+    font-variation-settings:"opsz" 9; color:var(--rust);
+    text-decoration:none; border-bottom:1px solid var(--rust); padding-bottom:.15rem;
+  }
+  .roomlink a:hover{color:var(--ink); border-bottom-color:var(--ink)}
+
+  /* room pages */
+  .roomtop{padding:clamp(2rem,5vw,3.4rem) var(--pad) 0}
+  .backlink{
+    display:inline-block; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+    font-weight:600; font-variation-settings:"opsz" 9; color:var(--soft); text-decoration:none;
+  }
+  .backlink:hover{color:var(--rust)}
+  .roomtop__name{
+    font-variation-settings:"opsz" 96,"WONK" 1; font-weight:400; font-style:italic;
+    font-size:clamp(1.9rem,5vw,3rem); line-height:1.04; letter-spacing:-.02em;
+    margin:.9rem 0 0; max-width:24ch;
+  }
+  .roomtop__rate{
+    color:var(--rust); font-size:clamp(1.7rem,4vw,2.4rem); line-height:1;
+    font-variation-settings:"opsz" 96,"WONK" 1; margin:.6rem 0 0;
+  }
+  .roomtop__rate .cap{color:var(--faint); margin-left:.4rem}
+  .backfoot{margin-top:1.8rem}
+  .backfoot a{font-size:.75rem; color:var(--soft)}
+
+  .sortbar{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:.45rem 1.2rem;
+    margin-top:.9rem; padding-bottom:.85rem; border-bottom:1px solid var(--faint);
+  }
+  .sortbtn{
+    font:inherit; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase;
+    font-weight:600; font-variation-settings:"opsz" 9;
+    background:none; border:0; border-bottom:1px solid transparent;
+    padding:.15rem 0; color:var(--soft); cursor:pointer;
+  }
+  .sortbtn:hover{color:var(--ink)}
+  .sortbtn.is-on{color:var(--rust); border-bottom-color:var(--rust)}
+  .room{margin-top:clamp(1.8rem,3.5vw,2.6rem); padding-top:clamp(1.2rem,2.5vw,1.7rem); border-top:1px solid var(--ink)}
+  .room__line{
+    display:flex; align-items:baseline; gap:.55rem; margin:0; font-weight:400;
+    font-size:clamp(1.1rem,2.2vw,1.32rem); font-variation-settings:"opsz" 24,"WONK" 1;
+  }
+  .room__name{font-style:italic}
+  .room__rate{
+    white-space:nowrap; color:var(--rust); font-style:normal;
+    font-size:clamp(1.5rem,3.4vw,2.1rem); line-height:1;
+    font-variation-settings:"opsz" 96,"WONK" 1; letter-spacing:-.01em;
+  }
+  .room__note{margin:.75rem 0 0}
+  .room .led{margin-top:.9rem}
+  .gal--room{margin-top:1.2rem}
+  .shared{margin-top:clamp(2.4rem,5vw,3.4rem)}
+  .shared .note{max-width:38rem}
+
+  /* sections */
+  .sec{padding:clamp(2.6rem,6vw,4.5rem) var(--pad) 0; max-width:66rem; margin:0 auto}
+  .sec__head{display:flex; align-items:baseline; gap:.9rem; margin-bottom:1.4rem}
+  .num{
+    font-size:.72rem; letter-spacing:.14em; color:var(--rust); font-weight:600;
+    border:1px solid var(--rust); border-radius:50%; width:2.1rem; height:2.1rem;
+    display:grid; place-items:center; flex:none; font-variation-settings:"opsz" 9;
+  }
+  .sec h2{
+    font-variation-settings:"opsz" 96,"WONK" 1; font-weight:400;
+    font-size:clamp(1.7rem,4.4vw,2.7rem); line-height:1.06; letter-spacing:-.02em; margin:0;
+  }
+  .sec h2 em{font-style:italic; color:var(--rust)}
+  .dash{border:0; border-top:1px dashed var(--rust); opacity:.65; margin:0 0 1.8rem}
+  .lede{font-size:clamp(1.06rem,1.7vw,1.24rem); line-height:1.55; max-width:38rem; margin:0 0 1.1rem}
+  p{max-width:36rem}
+  .drop::first-letter{
+    float:left; font-size:3.4em; line-height:.82; padding:.06em .12em 0 0;
+    font-variation-settings:"opsz" 144; color:var(--rust);
+  }
+  .two{display:grid; gap:clamp(1.6rem,4vw,3rem); grid-template-columns:1fr}
+  @media(min-width:860px){ .two{grid-template-columns:1fr 1fr} }
+
+  /* ledger with dot leaders */
+  /* a receipt line has a short leader; across a 66rem section the dots
+     run for half a metre and stop reading as one */
+  .led{list-style:none; margin:1.4rem 0 0; padding:0; max-width:44rem}
+  .led li{display:flex; align-items:baseline; gap:.45rem; padding:.42rem 0}
+  .led .k{white-space:nowrap}
+  .led .k b{font-weight:600}
+  .led .dots{flex:1 1 auto; min-width:1.5rem; border-bottom:1.5px dotted var(--faint); transform:translateY(-.3em)}
+  .led .v{white-space:nowrap; color:var(--soft); font-style:italic; text-align:right}
+  .led .v.num-v{font-style:normal; color:var(--ink)}
+  .led--loose li{padding:.6rem 0}
+  .note{font-style:italic; color:var(--soft); font-size:.9rem; margin-top:1rem}
+
+  /* the one display figure */
+  .figure{
+    text-align:center; margin:clamp(2rem,5vw,3rem) 0 0;
+    border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); padding:1.6rem 0;
+  }
+  .figure b{
+    display:block; font-style:italic; font-weight:400;
+    font-variation-settings:"opsz" 144,"SOFT" 20,"WONK" 1;
+    font-size:clamp(2.6rem,8vw,4.6rem); line-height:1; color:var(--rust); letter-spacing:-.02em;
+  }
+  .figure span{display:block; margin-top:.5rem}
+
+  /* gallery of plates */
+  .gal{display:grid; gap:clamp(.7rem,1.6vw,1.2rem); grid-template-columns:repeat(2,1fr); margin-top:1.8rem}
+  /* stays at three across on desktop: the galleries hold 9 and 6 plates,
+     both of which divide by three — four columns strands a lone photo */
+  @media(min-width:760px){ .gal{grid-template-columns:repeat(3,1fr)} }
+  .gal figure{margin:0}
+  .gal button{display:block; width:100%; padding:5px; line-height:0; border:1px solid var(--faint); border-radius:4px; background:var(--mount); cursor:zoom-in; overflow:hidden}
+  .gal img{width:100%; aspect-ratio:4/5; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .gal button:hover img{transform:scale(1.03)}
+  .gal figcaption{font-style:italic; color:var(--soft); font-size:.8rem; margin-top:.45rem; line-height:1.45}
+
+  .lb{position:fixed; inset:0; z-index:80; display:none; background:rgba(33,27,20,.95); padding:clamp(1rem,4vw,3rem); align-items:center; justify-content:center; flex-direction:column; gap:1rem}
+  .lb.on{display:flex}
+  .lb img{max-width:100%; max-height:82vh; object-fit:contain; border:1px solid var(--faint); border-radius:3px}
+  .lb p{color:var(--paper); font-style:italic; font-size:.88rem; margin:0; text-align:center; max-width:34rem}
+  .lb button{position:absolute; top:1rem; right:1rem; background:none; border:1px solid rgba(246,239,225,.5); color:var(--paper); font:inherit; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; padding:.5rem 1rem; cursor:pointer}
+
+  /* around: two column ledger */
+  .cols{columns:1; column-gap:clamp(2rem,5vw,4rem)}
+  @media(min-width:820px){ .cols{columns:2} }
+  .entry{break-inside:avoid; margin:0 0 1.5rem; max-width:none}
+  .entry h3{font-size:1.12rem; font-weight:600; margin:0 0 .1rem; font-variation-settings:"opsz" 24}
+  .entry .when{font-style:italic; color:var(--rust); font-size:.85rem}
+  .entry p{margin:.35rem 0 0; font-size:.94rem; color:var(--soft); max-width:none}
+
+  /* seal */
+  .close{text-align:center; padding:clamp(2.6rem,6vw,4rem) var(--pad) 0}
+  .seal{width:clamp(112px,17vw,148px); height:auto; margin:0 auto; transform:rotate(-6.5deg)}
+  .close .line{font-style:italic; color:var(--soft); margin:1.4rem auto 0; max-width:32rem}
+  .close .cap + .line{margin-top:.9rem; margin-bottom:clamp(2rem,4vw,2.8rem)}
+  .cta{
+    display:inline-block; margin-top:1.6rem; padding:.85rem 2.1rem;
+    border:1px solid var(--ink); text-decoration:none; font-size:.72rem;
+    letter-spacing:.2em; text-transform:uppercase; font-weight:600; font-variation-settings:"opsz" 9;
+  }
+  .cta:hover{background:var(--ink); color:var(--paper)}
+  .foot{
+    margin:clamp(2.4rem,5vw,3.4rem) var(--pad) 0; border-top:1px solid var(--ink);
+    padding-top:.9rem; display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; justify-content:space-between;
+  }
+  .kalka{display:block; margin:clamp(2rem,4vw,2.6rem) auto 0; width:46px; height:auto}
+
+  .rise{opacity:0; transform:translateY(14px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rise.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rise{opacity:1; transform:none; transition:none}
+    .gal img{transition:none}
+    .gal button:hover img{transform:none}
+  }
+  a:focus-visible,button:focus-visible{outline:2px solid var(--rust); outline-offset:3px}
+
+  /* ── desktop composition ─────────────────────────────────────────
+     Phones keep every rule above; nothing here applies below 1000px.
+     This block sits last on purpose — it overrides the base layout
+     rules, so it has to come after them in the cascade.
+     The page is photograph-led, so the job is to give the pictures
+     room and stop the prose floating in a field of white. */
+  @media(min-width:1000px){
+
+    /* hero: masthead and band down the left, the house filling the right */
+    .hero{
+      display:grid; grid-template-columns:1fr 1.02fr; align-items:center;
+      column-gap:clamp(2rem,4vw,3.6rem);
+      padding:clamp(2.2rem,4.5vw,3.8rem) var(--pad) 0;
+    }
+    .hero__text{grid-column:1}
+    .hero .head{text-align:left; padding:0}
+    .hero .alpona{margin-left:0; margin-right:0}
+    .hero .head p{margin-left:0; margin-right:0}
+    .hero .band{
+      margin:clamp(1.8rem,3vw,2.6rem) 0 0;
+      justify-content:flex-start; gap:.5rem 1.5rem;
+    }
+    .hero .plate--tall{grid-column:2; max-width:none; margin:0}
+    .hero .plate--tall img{max-height:none; aspect-ratio:4/5; object-position:52% 38%}
+    .hero .plate figcaption{text-align:left}
+
+    /* sections: the number and title sit in a rail, everything else runs
+       in the wide column beside it, so the page fills instead of
+       centring a narrow measure inside a lot of empty paper */
+    .sec{
+      max-width:none; display:grid; align-items:start;
+      grid-template-columns:15rem minmax(0,1fr);
+      column-gap:clamp(2.5rem,4vw,4rem);
+      padding-inline:clamp(2rem,5vw,4.5rem);
+    }
+    /* the rail is tall and the heading is short, so left at the top it
+       strands a column of empty paper beside every long section.
+       Spanning the rows and sticking keeps the number and title beside
+       whatever you are actually reading. The extra implicit rows are
+       empty and collapse to nothing. */
+    /* a room page has no numbered rail, so it uses the full width */
+    .sec--plain{grid-template-columns:minmax(0,1fr)}
+    .sec--plain > *{grid-column:1}
+    .roomtop{padding-inline:clamp(2rem,5vw,4.5rem)}
+
+    .sec__head{
+      grid-column:1; grid-row:1/span 50; align-self:start;
+      position:sticky; top:clamp(1.5rem,5vh,3rem);
+      flex-direction:column; align-items:flex-start; gap:.85rem; margin-bottom:0;
+    }
+    .sec h2{font-size:2.15rem}
+    .sec > *:not(.sec__head){grid-column:2}
+    .lede{font-size:1.28rem; max-width:44rem}
+
+    /* photographs, given room */
+    .sheet__in > .plate{margin-inline:0}
+    .sheet__in > .plate img{max-height:min(78vh,44rem); object-fit:cover}
+    .plate--wide{margin-inline:0}
+    .plate--wide img{max-height:none; aspect-ratio:2/1}
+    /* single plates align to the column they sit in rather than
+       centring inside it, which reads as floating */
+    .sec .plate--portrait{max-width:34rem; margin-inline:0}
+    .sec .plate--half{max-width:42rem; margin-inline:0}
+    /* the two room plates share one baseline instead of stacking */
+    .pair{grid-template-columns:1fr 1.3fr; align-items:start}
+    .pair .plate{max-width:none; margin:0}
+    .pair .plate img{max-height:none; height:min(60vh,32rem); object-fit:cover}
+    /* one height for both photos in a two-up, so they share a baseline
+       instead of one dangling below the other */
+    .two .plate img{max-height:none; height:min(44vh,23rem); object-fit:cover}
+
+    /* gallery as a mosaic — the first plate anchors it at four times
+       the area of its neighbours, which gives the grid a subject */
+    .gal figure{display:flex; flex-direction:column; margin:0}
+    .gal button{flex:1 1 auto}
+    .gal--mosaic figure:first-child{grid-column:span 2; grid-row:span 2}
+    .gal--mosaic figure:first-child img{aspect-ratio:auto; height:100%}
+    /* a room's own plates read as a set, all the same size */
+    .gal--room{grid-template-columns:repeat(5,1fr)}
+    .gal--three{grid-template-columns:repeat(3,1fr)}
+    /* a full set of a room's plates: three across, not five, so each
+       one is big enough to read. Where the count leaves a remainder of
+       one over three, the first and last span two columns — that adds
+       two cells and squares the grid off, so no lone photograph is
+       stranded on the end. */
+    .gal--set{grid-template-columns:repeat(3,1fr)}
+    .gal--set img{aspect-ratio:auto; height:min(32vh,17rem)}
+    .gal--span2 figure:first-child,
+    .gal--span2 figure:last-child{grid-column:span 2}
+  }
