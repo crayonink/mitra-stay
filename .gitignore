@@ -6,5 +6,6 @@ node_modules/
 # raw photo drops — full-size camera originals, resized into img/ by hand
 cheapestroom/
 1300walaroom/
+1500walaroom/
 photos/
 *.zip

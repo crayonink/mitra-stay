@@ -15,6 +15,7 @@
     --ink:#211b14;
     --soft:#6d5f4d;
     --faint:#b3a189;
+    --mount:#fffdf8;
     --rust:#a8442a;
     --indigo:#3a4a63;
     --pad:clamp(1.1rem,4vw,3.4rem);
@@ -69,7 +70,13 @@
 
   /* plates */
   .plate{margin:clamp(1.8rem,4vw,2.6rem) var(--pad) 0}
-  .plate img{width:100%; border:1px solid var(--faint); border-radius:3px; filter:saturate(.93) sepia(.05)}
+  /* a white mount, as a photograph is mounted on card — the paper is
+     warm and the photographs are warm, so without something neutral
+     between them the picture sinks into the page */
+  .plate img{
+    width:100%; border-radius:3px;
+    border:6px solid var(--mount); outline:1px solid var(--faint);
+  }
   .plate figcaption{font-style:italic; color:var(--soft); font-size:.86rem; margin-top:.55rem; text-align:center}
   .plate--tall img{max-height:min(76vh,40rem); object-fit:cover; object-position:52% 42%}
   .plate--wide{margin:clamp(1.8rem,4vw,2.6rem) 0 0}
@@ -155,8 +162,8 @@
      both of which divide by three — four columns strands a lone photo */
   @media(min-width:760px){ .gal{grid-template-columns:repeat(3,1fr)} }
   .gal figure{margin:0}
-  .gal button{display:block; width:100%; padding:0; line-height:0; border:1px solid var(--faint); border-radius:3px; background:none; cursor:zoom-in; overflow:hidden}
-  .gal img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:saturate(.93) sepia(.05); transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .gal button{display:block; width:100%; padding:5px; line-height:0; border:1px solid var(--faint); border-radius:4px; background:var(--mount); cursor:zoom-in; overflow:hidden}
+  .gal img{width:100%; aspect-ratio:4/5; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1)}
   .gal button:hover img{transform:scale(1.03)}
   .gal figcaption{font-style:italic; color:var(--soft); font-size:.8rem; margin-top:.45rem; line-height:1.45}
 
